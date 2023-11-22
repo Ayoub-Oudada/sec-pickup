@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android_Front</string>
+    <string name="Login">Se connecter</string>
+    <string name="Email">Email</string>
+    <string name="Password">Mot de passe</string>
+    <string name="forgetpw">Mot de passe oublié ?</string>
 </resources>
