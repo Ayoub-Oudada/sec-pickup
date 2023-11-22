@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_items">
+        <item>@string/role</item>
+        <item>Parent</item>
+        <item>Assistante</item>
+    </string-array>
+    <string name="role">Se connecter en tant que</string>
+</resources>
