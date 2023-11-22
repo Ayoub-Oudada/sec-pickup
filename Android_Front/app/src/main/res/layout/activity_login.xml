@@ -11,8 +11,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="181dp"
-        android:layout_height="175dp"
+        android:layout_width="168dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/icon" />
 
     <androidx.cardview.widget.CardView
@@ -24,9 +25,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="460dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/custom_edittext"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -39,13 +38,11 @@
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
-
             <EditText
                 android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_2_24"
                 android:drawablePadding="8dp"
@@ -57,8 +54,7 @@
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_lock_person_24"
                 android:drawablePadding="8dp"
@@ -66,34 +62,30 @@
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
-
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="40dp"
-
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
                 android:entries="@array/spinner_items"
                 android:padding="8dp"
                 android:textColor="@color/slateblue"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/slateblue"
                 android:text="@string/Login"
-                android:textSize="18sp"
-                app:cornerRadius="20dp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/signUpRedirectText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="53dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
@@ -101,9 +93,7 @@
                 android:textColor="@color/slateblue"
                 android:textSize="18sp" />
 
-
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 
