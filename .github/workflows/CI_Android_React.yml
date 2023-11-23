@@ -1,0 +1,46 @@
+name: CI_Android_React
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_react:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: |
+        cd sec-pickup/frontend
+        npm install
+
+    - name: Build React app
+      run: |
+        cd sec-pickup/frontend
+        npm run build
+
+  build_android:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Android
+      uses: reactivecircuits/setup-android@v2
+      with:
+        sdk-version: '30'
+
+    - name: Build Android app
+      run: |
+        cd sec-pickup/Android_Front
+        ./gradlew build
