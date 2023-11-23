@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [data, setData] = useState();
+  const [firstRender, setFirstRender] = useState(true);
+
+  const getData = async () => {
+    const response = await fetch("http://localhost:8080/api/users");
+    const data = await response.json();
+
+    setData(data);
+    setFirstRender(false);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        alignItems: "center",
+      }}
+    >
+      <button
+        style={{
+          width: "fit-content",
+        }}
+        onClick={getData}
+      >
+        test my app
+      </button>
+      {firstRender && (
+        <div style={{ display: "block" }}>
+          click on the button to test your app connection with your backend
+        </div>
+      )}
+      {data && (
+        <>
+          <div style={{ display: "block", color: "green" }}>
+            your app is ok! and this is the result from the backend :
+          </div>
+          <div>{JSON.stringify(data)}</div>
+        </>
+      )}
+      {!data && !firstRender && (
+        <div style={{ display: "block", color: "red" }}>your app isn't ok!</div>
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;
