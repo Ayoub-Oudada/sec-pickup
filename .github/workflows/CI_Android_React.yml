@@ -21,12 +21,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd sec-pickup/frontend
+        cd frontend
         npm install
 
     - name: Build React app
       run: |
-        cd sec-pickup/frontend
+        cd frontend
         npm run build
 
   build_android:
@@ -43,5 +43,5 @@ jobs:
 
     - name: Build Android app
       run: |
-        cd sec-pickup/Android_Front
+        cd Android_Front
         ./gradlew build
