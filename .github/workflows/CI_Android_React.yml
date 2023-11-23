@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup Android
-      uses: reactivecircuits/setup-android@v2
+      uses: reactivecircuits/setup-android@latest_version
       with:
         sdk-version: '30'
 
