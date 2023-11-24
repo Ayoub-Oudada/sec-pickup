@@ -9,11 +9,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+
 import android.content.Context;
 import android.widget.Toast;
 import android.util.Log;
@@ -21,7 +28,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TARGET_URL = "http://192.168.11.105:8000/endpoint";
+    private static final String TARGET_URL = "http://192.168.11.107:8080/api/users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 // Récupérez vos données à envoyer
                 String dataToSend = "Hello from Android App";
                 Toast.makeText(MainActivity.this, dataToSend, Toast.LENGTH_SHORT).show();
+
+
                 // Exécutez la tâche asynchrone pour envoyer les données
                 new SendDataAsyncTask().execute(dataToSend);
             }
@@ -46,42 +55,38 @@ public class MainActivity extends AppCompatActivity {
         @Nullable
         @Override
         protected Void doInBackground(String... params) {
+            String result = "";
+            HttpURLConnection urlConnection = null;
             try {
-                // Créez l'URL de destination
-                URL url = new URL(TARGET_URL);
+                // Your server URL
+                URL url = new URL("http://192.168.11.107:8080/api/users");
 
-                // Ouvrez une connexion HttpURLConnection
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                // Establish connection
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
 
-                // Configurez la connexion pour une requête POST
-                connection.setRequestMethod("POST");
-                connection.setDoOutput(true);
-
-                // Obtenez les données à envoyer
-                String dataToSend = params[0];
-
-                // Écrivez les données dans le flux de sortie de la connexion
-                try (OutputStream os = connection.getOutputStream()) {
-                    byte[] input = dataToSend.getBytes(StandardCharsets.UTF_8);
-                    os.write(input, 0, input.length);
+                // Read the response
+                InputStream inputStream = urlConnection.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringBuilder.append(line);
                 }
+                result = stringBuilder.toString();
+                System.out.println(result);
 
-                // Obtenez le code de réponse
-                int responseCode = connection.getResponseCode();
-
-                // Affichez le code de réponse dans les logs (pour le débogage)
-                Log.d("SendDataAsyncTask", "Response Code: " + responseCode);
-
-                // Fermez la connexion
-                connection.disconnect();
-
-            } catch (Exception e) {
-                // Affichez les erreurs dans les logs (pour le débogage)
-                Log.e("SendDataAsyncTask", "Error sending data", e);
+                // Close InputStream and disconnect
+                inputStream.close();
+            } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
             }
-
             return null;
         }
+
     }
 }
