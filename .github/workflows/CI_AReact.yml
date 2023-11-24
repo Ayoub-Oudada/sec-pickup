@@ -1,4 +1,4 @@
-name: CI_Android_React
+name: CI_React
 
 on:
   push:
@@ -28,20 +28,3 @@ jobs:
       run: |
         cd frontend
         npm run build
-
-  build_android:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Setup Android
-      uses: reactivecircuits/setup-android@v1.2.3
-      with:
-        sdk-version: '30'
-
-    - name: Build Android app
-      run: |
-        cd Android_Front
-        ./gradlew build
