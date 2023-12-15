@@ -28,7 +28,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TARGET_URL = "http://192.168.11.107:8080/api/users";
+    private static final String TARGET_URL = "http://localhost:9000/api/users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             HttpURLConnection urlConnection = null;
             try {
                 // Your server URL
-                URL url = new URL("http://192.168.11.107:8080/api/users");
+                URL url = new URL("http://localhost:9000/api/Auth");
 
                 // Establish connection
                 urlConnection = (HttpURLConnection) url.openConnection();
