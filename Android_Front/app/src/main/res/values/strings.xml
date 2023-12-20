@@ -5,4 +5,6 @@
     <string name="Password">Mot de passe</string>
     <string name="forgetpw">Mot de passe oublié ?</string>
     <string name="role">Se connecter en tant que</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
