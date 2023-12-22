@@ -2,7 +2,7 @@ package com.secpickup.android_front;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.AsyncTask;
@@ -22,6 +22,8 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import android.content.Context;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -29,6 +31,7 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TARGET_URL = "http://localhost:9000/api/users";
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,57 +39,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button sendDataButton = findViewById(R.id.sendDataButton);
-        sendDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Récupérez vos données à envoyer
-                String dataToSend = "Hello from Android App";
-                Toast.makeText(MainActivity.this, dataToSend, Toast.LENGTH_SHORT).show();
+        textView = findViewById(R.id.textViewId);
+        Intent intent = getIntent();
+        // Vérifiez si l'intention a une valeur associée à la clé spécifique
+         if (intent.hasExtra("username") & intent.hasExtra("type")) {
+             // Récupérez la valeur à partir de l'intention
+             String username = intent.getStringExtra("username");
+             String type = intent.getStringExtra("type");
+
+             // Maintenant, vous avez la valeur dans la variable valeurRecue
+             // Faites ce que vous voulez avec cette valeur
+             // Par exemple, affichez-la dans un TextView
+             textView.setText(username+" "+type);
+             // }
+             sendDataButton.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     // Récupérez vos données à envoyer
+                     String dataToSend = "Hello from Android App";
+                     Toast.makeText(MainActivity.this, dataToSend, Toast.LENGTH_SHORT).show();
 
 
-                // Exécutez la tâche asynchrone pour envoyer les données
-                new SendDataAsyncTask().execute(dataToSend);
-            }
-        });
-    }
-
-    private class SendDataAsyncTask extends AsyncTask<String, Void, Void> {
-
-        @Nullable
-        @Override
-        protected Void doInBackground(String... params) {
-            String result = "";
-            HttpURLConnection urlConnection = null;
-            try {
-                // Your server URL
-                URL url = new URL("http://localhost:9000/api/Auth");
-
-                // Establish connection
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-
-                // Read the response
-                InputStream inputStream = urlConnection.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuilder stringBuilder = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line);
-                }
-                result = stringBuilder.toString();
-                System.out.println(result);
-
-                // Close InputStream and disconnect
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
-            }
-            return null;
-        }
-
-    }
-}
+                     // Exécutez la tâche asynchrone pour envoyer les données
+                     // new SendDataAsyncTask().execute(dataToSend);
+                 }
+             });
+         }}}

@@ -1,6 +1,8 @@
 package com.secpickup.android_front;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -71,7 +73,12 @@ public class activity_login extends AppCompatActivity {
 
 
                                 Toast.makeText(activity_login.this, "Authentication successful", Toast.LENGTH_SHORT).show();
-
+                                //demarrer une page
+                                Intent intent= new Intent(getApplicationContext(), EleveList_Activity.class);
+                                intent.putExtra("username", username);
+                                intent.putExtra("type", type);
+                                startActivity(intent);
+                                finish();
                             } else {
 
                                 Toast.makeText(activity_login.this, "Empty response body", Toast.LENGTH_SHORT).show();

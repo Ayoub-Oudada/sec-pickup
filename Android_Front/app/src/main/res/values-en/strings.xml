@@ -6,4 +6,9 @@
     <string name="Password">Password</string>
     <string name="forgetpw">Forgot password?</string>
     <string name="role">Connect as</string>
+    <string name="Deposer">Drop off</string>
+    <string name="Absent">Absent</string>
+    <string name="Recuperer">Pick up</string>
+    <string name="situation">Curent situation</string>
+    <string name="nom_utilisateur">Username</string>
 </resources>
