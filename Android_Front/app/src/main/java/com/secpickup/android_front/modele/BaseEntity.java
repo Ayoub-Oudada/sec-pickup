@@ -13,6 +13,13 @@ public class BaseEntity {
 
     private Date createdAt;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     private Date updatedAt;
 }

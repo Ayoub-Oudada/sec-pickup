@@ -16,26 +16,23 @@
         android:theme="@style/Theme.Android_Front"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name=".Main_Parent"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".EleveList_Activity"
+            android:exported="false" >
 
+        </activity>
         <activity
             android:name=".activity_login"
             android:exported="false" />
-
         <activity
             android:name=".SplashScreenActivity"
-            android:exported="false">
-            <!-- Remove MAIN action and LAUNCHER category -->
-        </activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="false"></activity>
