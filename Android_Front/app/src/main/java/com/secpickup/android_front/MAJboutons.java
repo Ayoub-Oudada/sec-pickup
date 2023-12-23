@@ -3,7 +3,6 @@ package com.secpickup.android_front;
 import android.content.Context;
 import android.widget.Button;
 import androidx.core.content.ContextCompat;
-import com.secpickup.android_front.R;
 
 public class MAJboutons {
 
@@ -18,13 +17,13 @@ public class MAJboutons {
         resetButtonColors(btnRecuperer, btnDeposer, btnAbsent);
 
         // Changez la couleur et l'état activé des boutons en fonction de la situation
-        if ("deposed".equals(situation)) {
+        if ("DEPOSER".equals(situation)) {
             setButtonDisabledAndGrey(btnDeposer);
             setButtonEnabledAndGreen(btnRecuperer, btnAbsent);
-        } else if ("recuperated".equals(situation)) {
+        } if ("RECUPERER".equals(situation)) {
             setButtonDisabledAndGrey(btnRecuperer);
             setButtonEnabledAndGreen(btnDeposer, btnAbsent);
-        } else if ("absent".equals(situation)) {
+        } if ("ABSENT".equals(situation)) {
             setButtonDisabledAndGrey(btnAbsent);
             setButtonEnabledAndGreen(btnDeposer, btnRecuperer);
         }

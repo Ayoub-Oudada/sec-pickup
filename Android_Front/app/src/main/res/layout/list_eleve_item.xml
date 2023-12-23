@@ -45,46 +45,41 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="32dp"
         android:background="#C2C2C2"
-        app:layout_constraintTop_toBottomOf="@id/eleveListItem_prenom"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/buttonDeposer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_width="119dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="64dp"
         android:text="@string/Deposer"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRecuperer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/Recuperer"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/teal_200"
+        android:text="@string/Recuperer"
         app:layout_constraintEnd_toStartOf="@+id/buttonDeposer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonAbsent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/Absent"
+        android:layout_width="152dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="168dp"
         android:backgroundTint="@color/red"
-        app:layout_constraintEnd_toStartOf="@+id/buttonRecuperer"
-        app:layout_constraintHorizontal_bias="0.99"
+        android:text="@string/Absent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

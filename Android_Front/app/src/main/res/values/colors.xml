@@ -11,6 +11,8 @@
     <color name="slateblue"> #6F58C9</color>
     <color name="red"> #FF0000</color>
     <color name="grey">#CCC8C8</color>
+    <color name="default_green"> #DAF7A6</color>
+    <color name="clair">#EEF8F8 </color>
 
 
 </resources>
