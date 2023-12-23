@@ -23,12 +23,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EleveList_Activity extends AppCompatActivity {
-    //private RecyclerView recyclerView;
-    private RecyclerView  recyclerView;
 
+    private RecyclerView recyclerView;
+    private EleveAdapter eleveAdapter;
 
-    String username; // = "parent";
-    String type ; //= "PARENT";
+    String username;
+    String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,39 +36,38 @@ public class EleveList_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_eleve_list);
 
         Intent intent = getIntent();
-        if (intent.hasExtra("username") & intent.hasExtra("type")) {
-
+        if (intent.hasExtra("username") && intent.hasExtra("type")) {
             username = intent.getStringExtra("username");
             type = intent.getStringExtra("type");
-
         }
 
         recyclerView = findViewById(R.id.eleveList_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        loadEleves();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
 
+        loadEleves();
     }
+
     private void loadEleves() {
         RetrofitService retrofitService = new RetrofitService();
-        EleveApi employeApi = retrofitService.getRetrofit().create(EleveApi.class);
-        employeApi.searchParentByUsernameType(username, UserAccountType.valueOf(type))
+        EleveApi eleveApi = retrofitService.getRetrofit().create(EleveApi.class);
+        eleveApi.searchParentByUsernameType(username, UserAccountType.valueOf(type))
                 .enqueue(new Callback<List<Eleve>>() {
                     @Override
                     public void onResponse(Call<List<Eleve>> call, Response<List<Eleve>> response) {
-                        populateListView(response.body());
-
+                        if (response.isSuccessful()) {
+                            List<Eleve> eleveList = response.body();
+                            eleveAdapter = new EleveAdapter(eleveList);
+                            recyclerView.setAdapter(eleveAdapter);
+                        } else {
+                            Toast.makeText(EleveList_Activity.this, "Failed to load eleves", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<List<Eleve>> call, Throwable t) {
                         Toast.makeText(EleveList_Activity.this, "Failed to load eleves", Toast.LENGTH_SHORT).show();
-
                     }
                 });
-    }
-        private void populateListView(List<Eleve> eleveList ) {
-            EleveAdapter eleveAdapter = new EleveAdapter(eleveList);
-            recyclerView.setAdapter(eleveAdapter);
-
     }
 }
