@@ -9,11 +9,29 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: Checkout the code
         uses: actions/checkout@v2
+
+      - name: Run lintDebug
+        run: |
+          cd Android_Front
+          chmod +x ./gradlew
+          ./gradlew lintDebug
+
+      - name: Find lint report
+        run: |
+          lint_report=$(find Android_Front -type f -name "lint-results-debug.html")
+          echo "Lint report found at: $lint_report"
+          echo "Lint report path=$lint_report" >> $GITHUB_ENV
 
       - name: Upload html test report
         uses: actions/upload-artifact@v2
         with:
           name: lint.html
-          path: app/build/reports/lint-results-debug.html
+          path: Android_Front/app/build/reports/lint-results-debug.html
