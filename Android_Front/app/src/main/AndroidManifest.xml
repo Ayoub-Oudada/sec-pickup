@@ -25,6 +25,9 @@
             android:name=".activity_login"
             android:exported="false" />
         <activity
+            android:name=".activity_change_password"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>

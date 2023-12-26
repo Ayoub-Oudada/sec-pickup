@@ -19,4 +19,5 @@ public interface EleveApi {
             @Query("username") String username,
             @Query("type") UserAccountType type
     );
+
 }

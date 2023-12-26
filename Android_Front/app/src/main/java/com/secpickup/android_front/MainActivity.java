@@ -30,7 +30,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TARGET_URL = "http://localhost:9000/api/users";
+    private static final String TARGET_URL = "http://localhost:8080/api/users";
     private TextView textView;
 
     @Override
