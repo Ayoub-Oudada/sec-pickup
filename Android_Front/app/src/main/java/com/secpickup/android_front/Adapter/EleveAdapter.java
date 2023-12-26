@@ -45,7 +45,6 @@ public class EleveAdapter extends RecyclerView.Adapter<EleveHolder>{
         holder.prenom.setText(eleve.getPrenom());
         Situation situation = eleve.getSituation();
 
-
         if (situation.getId() != null) {
             holder.cne.setText(situation.getSituation()+" ");
             maJboutons.updateButtonColors(holder.btnRecuperer,holder.btnDeposer, holder.btnAbsent,situation.getSituation()+"");

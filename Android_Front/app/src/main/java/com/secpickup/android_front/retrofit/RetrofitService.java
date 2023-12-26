@@ -20,7 +20,7 @@ public class RetrofitService {
                 .setLenient()
                 .create();
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("http://100.89.18.186:8080/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }

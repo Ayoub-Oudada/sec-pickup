@@ -20,7 +20,7 @@ public class MAJboutons {
         if ("DEPOSER".equals(situation)) {
             setButtonDisabledAndGrey(btnDeposer);
             setButtonEnabledAndGreen(btnRecuperer, btnAbsent);
-        } if ("RECUPERER".equals(situation)) {
+        } if ("RECUPPERER".equals(situation)) {
             setButtonDisabledAndGrey(btnRecuperer);
             setButtonEnabledAndGreen(btnDeposer, btnAbsent);
         } if ("ABSENT".equals(situation)) {
