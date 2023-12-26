@@ -14,6 +14,7 @@ import CustomTable from "../../components/ui/CustomTable";
 import { applyPagination } from "../../utils/apply-pagination";
 
 const useParents = (page, rowsPerPage, data) => {
+  console.log(data);
   return useMemo(() => {
     return applyPagination(data, page, rowsPerPage);
   }, [page, rowsPerPage, data]);

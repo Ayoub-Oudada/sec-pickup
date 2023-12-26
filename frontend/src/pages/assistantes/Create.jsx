@@ -1,49 +1,25 @@
 import {
   Box,
-  Container,
-  Stack,
-  Typography,
-  Unstable_Grid2 as Grid,
   Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
+  Container,
   Divider,
+  Unstable_Grid2 as Grid,
+  Stack,
   TextField,
+  Typography,
 } from "@mui/material";
-import { useCallback, useState } from "react";
-import { Form, redirect, useActionData, useLoaderData } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 
-export async function action({ request, params }) {
-  console.log("test");
-  const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
+const Create = () => {
 
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(updates),
-  };
-
-  await fetch(import.meta.env.VITE_BACKEND_BASE_URL+ "/api/assistantes/updates.id", requestOptions);
-
-  return redirect(`/assistantes/`);
-}
-
-export const Update = (request, params) => {
-
-  const assistante = useLoaderData();
   const data = useActionData();
 
-
   return (
-    <>
-      <div>
-        <title>Assistante | Update</title>
-      </div>
+        <>
       <Box
         component="main"
         sx={{
@@ -59,51 +35,47 @@ export const Update = (request, params) => {
             <div>
               <Grid container spacing={4}>
                 <Grid xs={16} md={12} lg={12}>
-                  <Form autoComplete="off" noValidate method="post">
+                  <Form autoComplete="off" noValidate method="POST">
                     <Card>
                       <CardHeader
-                        subheader="La information peut être modifiée."
-                        title="Profile"
+                        subheader="Les informations peuvent être modifiée."
+                        title="Les informations de l'assistante"
                       />
                       <CardContent sx={{ pt: 0 }}>
                         <Box sx={{ m: -1.5 }}>
                           <Grid container spacing={3}>
                             <Grid xs={12} md={6}>
                               <TextField
-                                fullWidth
-                                label="prenom"
-                                name="prenom"
-                                required
-                                defaultValue={assistante.prenom}
                                 error={data?.error && data?.error?.prenom}
                                 helperText={data?.error?.prenom}
+                                fullWidth
+                                label="Prenom"
+                                name="prenom"
+                                required
                               />
                             </Grid>
                             <Grid xs={12} md={6}>
                               <TextField
-                                fullWidth
-                                label="nom"
-                                name="nom"
-                                required
-                                defaultValue={assistante.nom}
                                 error={data?.error && data?.error?.nom}
                                 helperText={data?.error?.nom}
+                                fullWidth
+                                label="Nom"
+                                name="nom"
+                                required
                               />
                             </Grid>
                             <Grid xs={12} md={6}>
                               <TextField
+                                error={data?.error && data?.error?.email}
+                                helperText={data?.error?.email}
                                 fullWidth
                                 label="Adresse email"
                                 name="email"
                                 required
-                                defaultValue={assistante.email}
-                                error={data?.error && data?.error?.email}
-                                helperText={data?.error?.email}
                               />
                             </Grid>
                             <Grid xs={12} md={6}>
                               <TextField
-                                defaultValue={assistante.cni}
                                 error={data?.error && data?.error?.cni}
                                 helperText={data?.error?.cni}
                                 fullWidth
@@ -112,13 +84,14 @@ export const Update = (request, params) => {
                                 type="text"
                               />
                             </Grid>
+                            
                           </Grid>
                         </Box>
                       </CardContent>
                       <Divider />
                       <CardActions sx={{ justifyContent: "flex-end" }}>
                         <Button variant="contained" type="submit">
-                          Sauvegarder
+                          Save details
                         </Button>
                       </CardActions>
                     </Card>
@@ -130,5 +103,7 @@ export const Update = (request, params) => {
         </Container>
       </Box>
     </>
-  );
-};
+  )
+}
+
+export default Create
