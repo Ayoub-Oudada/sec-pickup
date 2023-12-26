@@ -1,13 +1,13 @@
 import { redirect } from "react-router-dom";
 import Create from "../../pages/parents/Create";
 import Index from "../../pages/parents/Index";
-import axios, { HttpStatusCode } from "axios";
+import { HttpStatusCode } from "axios";
 import Update from "../../pages/parents/Update";
-
-const baseBackendUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+import api from "../../utils/api";
+import { requireAuth } from "../../utils/require-auth";
 
 export const parentsLoader = async () => {
-  const response = await axios.get(`${baseBackendUrl}/api/parents`);
+  const response = await api.get("/api/parents");
   return response.data;
 };
 
@@ -15,7 +15,7 @@ export const storeParent = async ({ request }) => {
   const data = await request.formData();
 
   try {
-    await axios.post(`${baseBackendUrl}/api/parents`, Object.fromEntries(data));
+    await api.post("/api/parents", Object.fromEntries(data));
   } catch (error) {
     if (error.response.status === HttpStatusCode.BadRequest) {
       return {
@@ -32,7 +32,7 @@ export const storeParent = async ({ request }) => {
 
 const deleteParent = ({ params }) => {
   try {
-    axios.delete(`${baseBackendUrl}/api/parents/${params.parentId}`);
+    api.delete(`/api/parents/${params.parentId}`);
   } catch (error) {
     console.log(error);
   }
@@ -40,23 +40,16 @@ const deleteParent = ({ params }) => {
 };
 
 const updateParentLoader = async ({ params }) => {
-  const response = await axios.get(
-    `${baseBackendUrl}/api/parents/${params.parentId}`
-  );
+  const response = await api.get(`/api/parents/${params.parentId}`);
   return response.data;
 };
 
 const updateParent = async ({ params, request }) => {
   const data = await request.formData();
-  console.log(Object.fromEntries(data));
 
   try {
-    await axios.put(
-      `${baseBackendUrl}/api/parents/${params.parentId}`,
-      Object.fromEntries(data)
-    );
+    await api.put(`/api/parents/${params.parentId}`, Object.fromEntries(data));
   } catch (error) {
-    console.log(error);
     if (error.response.status === HttpStatusCode.BadRequest) {
       return {
         error: error.response.data.errors.reduce((obj, item) => {
@@ -71,24 +64,25 @@ const updateParent = async ({ params, request }) => {
 
 export const parentRoutes = [
   {
+    index: true,
     path: "/parents",
     element: <Index />,
-    loader: parentsLoader,
+    loader: requireAuth(parentsLoader),
   },
   {
     path: "/parents/create",
     element: <Create />,
-    action: storeParent,
+    action: requireAuth(storeParent),
   },
   {
     path: "/parents/:parentId",
     element: <Update />,
     action: updateParent,
-    loader: updateParentLoader,
+    loader: requireAuth(updateParentLoader),
   },
   {
     path: "/parents/:parentId/delete",
-    action: deleteParent,
+    action: requireAuth(deleteParent),
     errorElement: <div>Oops! There was an error.</div>,
   },
 ];

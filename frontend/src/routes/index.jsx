@@ -3,6 +3,7 @@ import AuthLayout from "../components/layout/AuthLayout";
 import ErrorPage from "../error-page";
 import { authRoutes } from "./auth";
 import { parentRoutes } from "./parents";
+import { trajetsRoutes } from "./trajets";
 
 export const mainRoutes = [
   {
@@ -11,7 +12,7 @@ export const mainRoutes = [
       {
         path: "/",
         element: <AppLayout />,
-        children: [...parentRoutes],
+        children: [...parentRoutes, ...trajetsRoutes],
       },
       {
         path: "/auth",

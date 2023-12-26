@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/use-auth";
 
 // eslint-disable-next-line react/prop-types
@@ -12,6 +12,7 @@ function RequireAuth({ children }) {
     if (!loading && !token)
       navigate("/auth/login", { state: { from: location.pathname } });
   }, [token, loading, navigate, location]);
+  if (!loading && !token) return <Navigate to={"/auth/login"} />;
 
   if (loading) return <div>loading...</div>;
 
