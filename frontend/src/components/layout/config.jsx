@@ -17,6 +17,15 @@ export const items = [
     ),
   },
   {
+    title: "Trajets",
+    path: "/trajets",
+    icon: (
+      <SvgIcon fontSize="small">
+        <ChartBarIcon />
+      </SvgIcon>
+    ),
+  },
+  {
     title: "Eleves",
     path: "/eleves",
     icon: (
