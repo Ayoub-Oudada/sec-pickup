@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.material.appbar.MaterialToolbar;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 import com.secpickup.android_front.Adapter.EleveAdapter;
+import com.secpickup.android_front.fragments.ChangerMDPFragment;
+import com.secpickup.android_front.fragments.ContacterEcoleFragment;
+import com.secpickup.android_front.fragments.DemanderPiecesFragment;
+import com.secpickup.android_front.fragments.HomeFragment;
 import com.secpickup.android_front.modele.Eleve;
 import com.secpickup.android_front.modele.UserAccountType;
 import com.secpickup.android_front.retrofit.EleveApi;
@@ -22,10 +27,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EleveList_Activity extends AppCompatActivity {
+public class EleveList_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recyclerView;
     private EleveAdapter eleveAdapter;
+    private DrawerLayout drawerLayout;
+
 
     String username;
     String type;
@@ -35,29 +42,8 @@ public class EleveList_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_parent);
 
-        MaterialToolbar toolbar = findViewById(R.id.toolBar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu de navigation", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menuSearch) {
-                    Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu recherche", Toast.LENGTH_SHORT).show();
-                    return true;
-                } else if (item.getItemId() == R.id.menuSettings) {
-                    Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu paramètre", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
-            }
-        });
+        Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
+        setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
         if (intent.hasExtra("username") && intent.hasExtra("type")) {
@@ -68,8 +54,20 @@ public class EleveList_Activity extends AppCompatActivity {
         recyclerView = findViewById(R.id.eleveList_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
         loadEleves();
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
+                R.string.close_nav);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_demo);
+        }
+
     }
 
     private void loadEleves() {
@@ -93,5 +91,35 @@ public class EleveList_Activity extends AppCompatActivity {
                         Toast.makeText(EleveList_Activity.this, "Failed to load eleves", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_demo :
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                break;
+            case R.id.nav_demander_pieces:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DemanderPiecesFragment()).commit();
+                break;
+            case R.id.nav_contacter_ecole:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContacterEcoleFragment()).commit();
+                break;
+            case R.id.nav_chnager_mdp:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
