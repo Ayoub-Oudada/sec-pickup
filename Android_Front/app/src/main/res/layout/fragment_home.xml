@@ -6,9 +6,4 @@
     tools:context=".fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <include
-        layout="@layout/activity_main_parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </FrameLayout>

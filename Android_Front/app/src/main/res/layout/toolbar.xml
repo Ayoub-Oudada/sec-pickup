@@ -1,0 +1,10 @@
+<!-- toolbar_layout.xml -->
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:id="@+id/toolbar"
+    android:elevation="4dp"
+    android:background="@color/lavender"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
