@@ -8,9 +8,9 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_demo"
-            android:icon="@drawable/baseline_lightbulb_24"
-            android:title="Demo"/>
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home"/>
 
         <item
             android:id="@+id/nav_demander_pieces"
@@ -26,6 +26,11 @@
             android:id="@+id/nav_chnager_mdp"
             android:icon="@drawable/baseline_password_24"
             android:title="Changer Mot de Pass"/>
+
+        <item
+            android:id="@+id/nav_demo"
+            android:icon="@drawable/baseline_lightbulb_24"
+            android:title="Demo"/>
     </group>
     <item
         android:title="">

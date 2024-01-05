@@ -17,10 +17,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".EleveList_Activity"
+            android:name=".MainActivity2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" >
-
+            android:exported="true"/>
+        <activity
+            android:name=".toolbar"
+            android:exported="false" />
+        <activity
+            android:name=".EleveList_Activity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".activity_login"
@@ -39,7 +44,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
