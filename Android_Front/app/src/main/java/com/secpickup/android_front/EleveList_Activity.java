@@ -90,7 +90,8 @@ public class EleveList_Activity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<Eleve>> call, Throwable t) {
-                        Toast.makeText(EleveList_Activity.this, "Failed to load eleves", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EleveList_Activity.this, "Failed to load eleves: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        System.out.println(t.getMessage());
                     }
                 });
     }

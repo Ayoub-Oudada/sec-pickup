@@ -82,7 +82,7 @@ public class activity_login extends AppCompatActivity {
                                 finish();
                                 }
                                 if(type=="ASSISTANTE"){
-                                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                                    Intent intent= new Intent(getApplicationContext(), assistantebusmain.class);
                                     intent.putExtra("username", username);
                                     intent.putExtra("type", type);
                                     startActivity(intent);
