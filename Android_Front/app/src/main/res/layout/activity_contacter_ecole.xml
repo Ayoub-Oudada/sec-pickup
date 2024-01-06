@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ContacterEcoleActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contacter Ecole"
+                android:textAlignment="center"
+                android:textColor="@color/slateblue"
+                android:textSize="33sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/NomEcole"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:text="Ecole : "
+                android:textSize="16sp"
+                android:drawablePadding="8dp"
+                android:padding="8dp"
+                android:textColor="@color/grey2" />
+
+            <TextView
+                android:id="@+id/NumTel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                 android:drawablePadding="8dp"
+                android:text="Numero de telephone : "
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:textColor="@color/grey2"
+                 />
+            <TextView
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="8dp"
+                android:text="Email : "
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:textColor="@color/grey2"
+                 />
+            <TextView
+                android:id="@+id/SiteWeb"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="8dp"
+                android:text="site web : "
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:textColor="@color/grey2"
+                 />
+
+
+            <Button
+                android:id="@+id/Annuler"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/slateblue"
+                android:text="@string/Annuler"
+                android:textSize="18sp" />
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
