@@ -50,7 +50,4 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.7.2")
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
     implementation ("com.google.maps:google-maps-services:0.19.0")
-
-
-
 }
