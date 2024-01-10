@@ -5,16 +5,17 @@
     <string name="Password">Mot de passe</string>
     <string name="forgetpw">Mot de passe oublié ?</string>
     <string name="role">Se connecter en tant que</string>
-    <string name="Deposer" >Deposer</string>
-    <string name="Absent" >Absent</string>
+    <string name="Deposer">Deposer</string>
+    <string name="Absent">Absent</string>
     <string name="Recuperer">Recuperer</string>
     <string name="situation">Situation actuelle</string>
-    <string name="nom_utilisateur" >Nom d\'utilisateur</string>
-    <string name="oldPassword" >Ancien mot de passe</string>
-    <string name="newPassword" >Nouveau mot de passe</string>
-    <string name="confirmPassword" >Confirmer mot de passe</string>
-    <string name="Enregistrer" >Enregistrer</string>
-    <string name="Annuler" >Annuler</string>
+    <string name="nom_utilisateur">Nom d\'utilisateur</string>
+    <string name="oldPassword">Ancien mot de passe</string>
+    <string name="newPassword">Nouveau mot de passe</string>
+    <string name="confirmPassword">Confirmer mot de passe</string>
+    <string name="Enregistrer">Enregistrer</string>
+    <string name="Annuler">Annuler</string>
+    <string name="title_activity_visualiser_trajet">Visualiser_Trajet</string>
 
 
 </resources>
