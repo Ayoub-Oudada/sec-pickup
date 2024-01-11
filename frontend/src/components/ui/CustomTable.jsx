@@ -36,7 +36,7 @@ export const CustomTable = (props) => {
             <TableHead>
               <TableRow>
                 {fields.map((field, index) => (
-                  <TableCell key={index}>{field}</TableCell>
+                  <TableCell key={index}>{field.label}</TableCell>
                 ))}
                 <TableCell>actions</TableCell>
               </TableRow>
@@ -46,10 +46,18 @@ export const CustomTable = (props) => {
                 return (
                   <TableRow hover key={item.id}>
                     {fields.map((field, index) => (
+                  
                       <TableCell key={index}>
-                        <Typography variant="subtitle2">
-                          {item[field]}
+                        { (Array.isArray(field.ident) && item[field.ident[0]]!=null) ?  
+                          <Typography variant="subtitle2">
+                            {item[field.ident[0]][field.ident[1]]}
                         </Typography>
+                        :  
+                        <Typography variant="subtitle2">
+                          {item[field.ident]}
+                        </Typography>
+                        }
+
                       </TableCell>
                     ))}
                     <TableCell
