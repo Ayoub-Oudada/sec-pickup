@@ -79,6 +79,7 @@ const Index = () => {
               </Link>
             </Stack>
             <CustomTable
+              showAction
               fields={fields}
               count={data.length}
               items={trajets}
@@ -89,6 +90,7 @@ const Index = () => {
               actions={{
                 updateActionUrl: (id) => "/trajets/" + id,
                 deleteActionUrl: (id) => "/trajets/" + id + "/delete",
+                showDetails: (id) => "/trajets/trajet-rues/" + id,
               }}
             />
           </Stack>

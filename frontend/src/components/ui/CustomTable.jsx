@@ -1,4 +1,4 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { PencilIcon, TrashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import {
   Box,
   Button,
@@ -26,6 +26,7 @@ export const CustomTable = (props) => {
     page = 0,
     rowsPerPage = 0,
     actions,
+    showAction,
   } = props;
 
   return (
@@ -66,6 +67,15 @@ export const CustomTable = (props) => {
                           </SvgIcon>
                         </Button>
                       </Link>
+                      {showAction && (
+                        <Link to={actions.showDetails(item.id)}>
+                          <Button variant="contained" color={"info"}>
+                            <SvgIcon fontSize="small">
+                              <EyeIcon />
+                            </SvgIcon>
+                          </Button>
+                        </Link>
+                      )}
 
                       <Form
                         method="delete"
@@ -116,6 +126,7 @@ CustomTable.propTypes = {
   page: PropTypes.number,
   rowsPerPage: PropTypes.number,
   actions: PropTypes.object,
+  showAction: PropTypes.bool,
 };
 
 export default CustomTable;
