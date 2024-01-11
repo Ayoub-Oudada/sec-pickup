@@ -13,19 +13,31 @@ import { Link, useLoaderData } from "react-router-dom";
 import CustomTable from "../../components/ui/CustomTable";
 import { applyPagination } from "../../utils/apply-pagination";
 
-const useTrajets = (page, rowsPerPage, data) => {
+
+const fields = [{label: "id", ident: "id"}, {label:"libelle rue", ident: "lib_rue"}, {ident:["trajet","libTrajet"],label:"libelle trajet"}];
+
+const useRues = (page, rowsPerPage, data) => {
   return useMemo(() => {
+    console.log(data);
     return applyPagination(data, page, rowsPerPage);
   }, [page, rowsPerPage, data]);
 };
 
-const fields = [{label:"id",ident:"id"}, {label:"libTrajet", ident: "libTrajet"}];
 
-const Index = () => {
+export const Index = () => {
   const data = useLoaderData();
+
+  // const extractedTrajets = [];
+
+  // for (const { trajet } of data) {
+  //     extractedTrajets.push(trajet);   
+  // }
+
+  // console.log(data);
+  
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const trajets = useTrajets(page, rowsPerPage, data);
+  const rues = useRues(page, rowsPerPage, data);
 
   const handlePageChange = useCallback((event, value) => {
     setPage(value);
@@ -38,7 +50,7 @@ const Index = () => {
   return (
     <>
       <Box>
-        <title>Trajets | Devias Kit</title>
+        <title>Rues | Devias Kit</title>
       </Box>
       <Box
         component="main"
@@ -51,7 +63,7 @@ const Index = () => {
           <Stack spacing={3}>
             <Stack direction="row" justifyContent="space-between" spacing={4}>
               <Stack spacing={1}>
-                <Typography variant="h4">Trajets</Typography>
+                <Typography variant="h4">Rues</Typography>
                 <Stack alignItems="center" direction="row" spacing={1}>
                   <Button
                     color="inherit"
@@ -65,7 +77,7 @@ const Index = () => {
                   </Button>
                 </Stack>
               </Stack>
-              <Link to={"/trajets/create"}>
+              <Link to={"/rues/create"}>
                 <Button
                   startIcon={
                     <SvgIcon fontSize="small">
@@ -81,14 +93,14 @@ const Index = () => {
             <CustomTable
               fields={fields}
               count={data.length}
-              items={trajets}
+              items={rues}
               onPageChange={handlePageChange}
               onRowsPerPageChange={handleRowsPerPageChange}
               page={page}
               rowsPerPage={rowsPerPage}
               actions={{
-                updateActionUrl: (id) => "/trajets/" + id,
-                deleteActionUrl: (id) => "/trajets/" + id + "/delete",
+                updateActionUrl: (id) => "/rues/" + id + "/edit",
+                deleteActionUrl: (id) => "/rues/" + id + "/delete",
               }}
             />
           </Stack>
@@ -97,5 +109,3 @@ const Index = () => {
     </>
   );
 };
-
-export default Index;
