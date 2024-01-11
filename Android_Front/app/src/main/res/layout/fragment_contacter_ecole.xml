@@ -50,6 +50,7 @@
 
             <!-- Deuxième texte -->
             <TextView
+                android:id="@+id/nom_ecole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="AL Majd"
@@ -70,10 +71,11 @@
                 android:textColor="@color/slateblue"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Numéro de télèphone :"/>
+                android:text="Télé Fix:"/>
 
             <!-- Deuxième texte -->
             <TextView
+                android:id="@+id/num_tele_ecole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -98,6 +100,7 @@
 
             <!-- Deuxième texte -->
             <TextView
+                android:id="@+id/mail_eole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -122,6 +125,7 @@
 
             <!-- Deuxième texte -->
             <TextView
+                android:id="@+id/site_web_ecole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
