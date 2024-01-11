@@ -5,6 +5,7 @@ import api from "../../utils/api";
 import { redirect } from "react-router-dom";
 import { requireAuth } from "../../utils/require-auth";
 import Create from "../../pages/trajets/Create";
+import TrajetRuesDetails from "../../pages/trajets/TrajetRuesDetails";
 
 const trajetsLoader = async () => {
   const response = await api.get("/api/trajets");
@@ -56,6 +57,13 @@ const storeTrajet = async ({ request }) => {
   return redirect("/trajets");
 };
 
+const trajetWithRuesLoader = async ({ params }) => {
+  const rues = await api.get(`/api/rues`);
+  const trajet = await api.get("/api/trajets/" + params.trajetId);
+  console.log(trajet);
+  return { trajet: trajet.data, rues: rues.data };
+};
+
 export const trajetsRoutes = [
   {
     path: "/trajets",
@@ -73,6 +81,11 @@ export const trajetsRoutes = [
     element: <Update />,
     loader: requireAuth(updateTrajetLoader),
     action: requireAuth(updateTrajetAction),
+  },
+  {
+    path: "/trajets/trajet-rues/:trajetId",
+    element: <TrajetRuesDetails />,
+    loader: requireAuth(trajetWithRuesLoader),
   },
   {
     path: "/trajets/:trajetId/delete",
