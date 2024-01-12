@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="182dp"
             android:layout_marginTop="112dp"
-            android:backgroundTint="#F49302"
+            android:backgroundTint="@color/orange"
             android:text="@string/Recuperer"
             app:layout_constraintEnd_toStartOf="@+id/buttonDeposer"
             app:layout_constraintStart_toStartOf="parent"
