@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <!-- Contenu principal -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/eleveList_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <!-- Layout pour chaque page du ViewPager (peut être un fragment ou une vue personnalisée) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.viewpager.widget.ViewPager>
+
+    <!-- Carte (Map) en bas de la page -->
+
+</RelativeLayout>
