@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:gravity="center">
+
+
     <ImageView
         android:id="@+id/arrowLeft"
         android:layout_width="56dp"
@@ -63,13 +65,13 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#C2C2C2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+<!--        <View-->
+<!--            android:id="@+id/view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:background="#C2C2C2"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
 
         <Button
             android:id="@+id/buttonDeposer"
@@ -113,5 +115,6 @@
         android:layout_width="56dp"
         android:layout_height="38dp"
         app:srcCompat="@drawable/right" />
+
 
 </LinearLayout>
