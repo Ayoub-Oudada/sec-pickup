@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -24,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -66,19 +68,19 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
+                logout();
                 break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    private void logout() {
+        Intent intent = new Intent(MainActivity2.this, activity_login.class);
+        startActivity(intent);
+        finish();
     }
+
+
+
 }

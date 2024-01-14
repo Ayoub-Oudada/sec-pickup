@@ -1,15 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".activity_login">
 
-    <include
-        layout="@layout/activity_change_password"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="168dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/icon" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-</RelativeLayout>
+        <TextView
+            android:text="Changer le mot de passe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/slateblue"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/changePassword_old"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawablePadding="8dp"
+            android:hint="@string/oldPassword"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/changePassword_new"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext"
+            android:drawablePadding="8dp"
+            android:hint="@string/newPassword"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/changePassword_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext"
+            android:drawablePadding="8dp"
+            android:hint="@string/confirmPassword"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/changePassword_Annuler"
+                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/slateblue"
+                android:text="@string/Annuler"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/changePassword_Enregitrer"
+                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/slateblue"
+                android:text="@string/Enregistrer"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
