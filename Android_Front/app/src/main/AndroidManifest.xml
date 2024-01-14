@@ -17,14 +17,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".forgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".ContacterEcoleActivity"
             android:exported="false" />
         <activity
-            android:name=".ContacterEcole"
-            android:exported="false" />
-        <activity
             android:name=".EleveList_Activity"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".activity_login"
             android:exported="false" />
@@ -43,10 +45,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".assistantebusmain"
-            android:exported="false" />
+            android:exported="false"></activity>
+        
     </application>
 
 </manifest>
