@@ -21,11 +21,14 @@ public class LoadTrajet {
         void onPositionLoaded(Positions position);
         void onFailedToLoadPosition();
     }
+<<<<<<< HEAD
 
     public interface LoadDistanceCallback {
         void onDistanceLoaded(Double distance);
         void onFailedToLoadDistance();
     }
+=======
+>>>>>>> dev
     List<Positions> positionList=null;
     public List<Positions> loadTrajet(String username, LoadTrajetCallback loadTrajetCallback) {
         RetrofitService retrofitService = new RetrofitService();
@@ -73,6 +76,7 @@ public class LoadTrajet {
                     }
                 });
     }
+<<<<<<< HEAD
 
     public void loadDistance(String username1,String username2, LoadDistanceCallback loadDistanceCallback) {
         RetrofitService retrofitService = new RetrofitService();
@@ -96,4 +100,6 @@ public class LoadTrajet {
                     }
                 });
     }
+=======
+>>>>>>> dev
 }

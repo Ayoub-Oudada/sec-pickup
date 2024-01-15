@@ -18,6 +18,22 @@
         android:theme="@style/Theme.Android_Front"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAM62zi6ulD1s5mnU7H_5FoANiyqGhAZPk" />
+
+        <activity
+            android:name=".Visualiser_Trajet"
+            android:exported="false"
+            android:label="@string/title_activity_visualiser_trajet" />
+        <activity
+            android:name=".forgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ContacterEcoleActivity"
+            android:exported="false" />
         <activity
             android:name=".SendLocationActivity"
             android:exported="false" />
@@ -30,6 +46,7 @@
         <activity
             android:name=".activity_change_password"
             android:exported="false" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

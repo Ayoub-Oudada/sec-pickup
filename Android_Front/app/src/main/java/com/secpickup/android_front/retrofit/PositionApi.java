@@ -21,9 +21,12 @@ public interface PositionApi {
     @GET("/api/position/last")
     Call<Positions> GetPosition(@Query("username") String username);
 
+<<<<<<< HEAD
     @GET("/api/position/distance")
     Call<Double> GetDistance(@Query("username1") String username1, @Query("username2") String username2);
 
+=======
+>>>>>>> dev
 
 
 }
