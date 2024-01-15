@@ -33,6 +33,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bouton_Visualiser_trajet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="638dp"
+        android:gravity="center"
+        android:text="visualiser trajet"
+        app:layout_constraintBaseline_toBottomOf="@id/eleveList_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eleveList_recyclerView"
+        tools:ignore="MissingConstraints">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

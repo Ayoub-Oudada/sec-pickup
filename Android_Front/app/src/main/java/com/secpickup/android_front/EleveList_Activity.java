@@ -9,14 +9,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.maps.model.LatLng;
 import com.secpickup.android_front.Adapter.EleveAdapter;
 import com.secpickup.android_front.modele.Eleve;
+import com.secpickup.android_front.modele.Positions;
+import com.secpickup.android_front.modele.Trajet;
 import com.secpickup.android_front.modele.UserAccountType;
 import com.secpickup.android_front.retrofit.EleveApi;
 import com.secpickup.android_front.retrofit.RetrofitService;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +50,27 @@ public class EleveList_Activity extends AppCompatActivity {
 
             }
         });
+
+        Button bouton_visualiser_trajet =  findViewById(R.id.bouton_Visualiser_trajet);
+        bouton_visualiser_trajet.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+            @Override
+            public void onClick(View view) {
+
+
+
+                //remplir le trajet avec les donnees recuperer de la base
+                Intent intent= new Intent(getApplicationContext(), Visualiser_Trajet.class);
+
+                intent.putExtra("Assistante","Alpha");
+                startActivity(intent);
+                finish();
+
+
+            }});
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

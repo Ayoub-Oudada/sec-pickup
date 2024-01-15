@@ -40,11 +40,6 @@ public class LoadStudent {
                             // a =eleveList.size();
                              System.err.println(eleveList.size());
 
-
-
-
-
-
                         } else {
                             //Toast.makeText(EleveList_Activity.this, "Failed to load eleves", Toast.LENGTH_SHORT).show();
                             System.out.println("Failed to load eleves");
