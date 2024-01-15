@@ -1,86 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/eleveListItem_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Eleve Name"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/eleveListItem_prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:paddingBottom="20dp"
-        android:text="Eleve Prenom"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eleveListItem_name" />
-
-    <TextView
-        android:id="@+id/eleveListItem_cne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="112dp"
-        android:text="@string/situation"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#C2C2C2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/buttonDeposer"
-        android:layout_width="119dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="64dp"
-        android:text="@string/Deposer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonRecuperer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="@string/Recuperer"
-        app:layout_constraintEnd_toStartOf="@+id/buttonDeposer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonAbsent"
-        android:layout_width="152dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="168dp"
-        android:backgroundTint="@color/red"
-        android:text="@string/Absent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/arrowLeft"
+        android:layout_width="56dp"
+        android:layout_height="38dp"
+        app:srcCompat="@drawable/left" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="315dp"
+        android:layout_height="266dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <ImageView
+            android:id="@+id/imageEnfant"
+            android:layout_width="56dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="28dp"
+            app:srcCompat="@drawable/enfants" />
+
+        <TextView
+            android:id="@+id/eleveListItem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="45dp"
+            android:text="Nom"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/eleveListItem_cne"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="183dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/situation"
+            android:textAlignment="center"
+            android:textColor="@color/green"
+            android:textSize="13sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eleveListItem_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="25dp"
+            android:text="Prenom"
+            android:textAlignment="center"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+<!--        <View-->
+<!--            android:id="@+id/view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:background="#C2C2C2"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
+
+        <Button
+            android:id="@+id/buttonDeposer"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="112dp"
+            android:text="@string/Deposer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonRecuperer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="182dp"
+            android:layout_marginTop="112dp"
+            android:backgroundTint="@color/orange"
+            android:text="@string/Recuperer"
+            app:layout_constraintEnd_toStartOf="@+id/buttonDeposer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonAbsent"
+            android:layout_width="152dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="168dp"
+            android:backgroundTint="@color/red2"
+            android:text="@string/Absent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/arrowRight"
+        android:layout_width="56dp"
+        android:layout_height="38dp"
+        app:srcCompat="@drawable/right" />
+
+
+</LinearLayout>

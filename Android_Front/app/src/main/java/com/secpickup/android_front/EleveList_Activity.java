@@ -2,38 +2,81 @@ package com.secpickup.android_front;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.secpickup.android_front.Adapter.EleveAdapter;
 import com.secpickup.android_front.modele.Eleve;
+import com.secpickup.android_front.modele.Positions;
 import com.secpickup.android_front.modele.UserAccountType;
 import com.secpickup.android_front.retrofit.EleveApi;
+import com.secpickup.android_front.retrofit.PositionApi;
 import com.secpickup.android_front.retrofit.RetrofitService;
+
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EleveList_Activity extends AppCompatActivity {
+public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.LoadTrajetCallback,LoadTrajet.LoadPositionCallback{
 
     private RecyclerView recyclerView;
     private EleveAdapter eleveAdapter;
 
+    //////////////loc////////
+    private LocationManager locationManager;
+    private double latitude = 0.0;
+    private double longitude = 0.0;
+    private Handler handler;
+    private TextView textView;
+    private LocationListener locationListener;
+
+
+    //////////////////////
+
     String username;
     String type;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_parent);
+
+
+
+        ////////////////////loc///////////////////
+        //Button startServiceButton = findViewById(R.id.btnStartService);
+        textView = findViewById(R.id.textViewId);
+        FloatingActionButton startServiceButton = findViewById(R.id.btnStartService);
+        handler = new Handler();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        LoadTrajet loadTrajet =new LoadTrajet();
+        loadTrajet.loadTrajet ("AssistanteB", this);
+        loadTrajet.loadPosition ("AssistanteB", this);
+        /////////////////////////////
 
         MaterialToolbar toolbar = findViewById(R.id.toolBar);
 
@@ -70,6 +113,15 @@ public class EleveList_Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         loadEleves();
+
+        startServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancez le service en cliquant sur le bouton
+                //startLocationUpdates();
+                Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur Tracking", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loadEleves() {
@@ -94,5 +146,39 @@ public class EleveList_Activity extends AppCompatActivity {
                         System.out.println(t.getMessage());
                     }
                 });
+    }
+
+
+    @Override
+    public void onTrajetLoaded(List<Positions> trajet) {
+
+        String username="AssistanteB";
+        List<LatLng> latLngs = new ArrayList<>();
+        LatLng latLng;
+        for (int i=0; i<trajet.size();i++){
+            latLng=new LatLng(trajet.get(i).getLatitude(),trajet.get(i).getLongitude());
+            latLngs.add(latLng);
+
+        }
+        textView.setText(username+" Latitude-Longitude :"+latLngs.toString());
+    }
+
+
+    @Override
+    public void onFailedToLoadTrajet() {
+
+    }
+
+    @Override
+    public void onPositionLoaded(Positions position) {
+        String username="AssistanteB";
+        //String type="ASSISTANTE";
+        LatLng latLng=new LatLng(position.getLatitude(),position.getLongitude());
+        textView.setText(username+" Latitude-Longitude de LastPoint :"+latLng);
+    }
+
+    @Override
+    public void onFailedToLoadPosition() {
+
     }
 }
