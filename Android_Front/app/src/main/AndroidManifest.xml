@@ -22,6 +22,12 @@
             android:name=".SendLocationActivity"
             android:exported="false" />
         <activity
+            android:name=".forgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ContacterEcoleActivity"
+            android:exported="false" />
+        <activity
             android:name=".EleveList_Activity"
             android:exported="false"></activity>
         <activity
@@ -30,6 +36,7 @@
         <activity
             android:name=".activity_change_password"
             android:exported="false" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

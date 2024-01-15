@@ -38,6 +38,7 @@ public class activity_login extends AppCompatActivity {
         spinnerOptions = findViewById(R.id.spinner);
         Button postDataButton = findViewById(R.id.login_button);
 
+
         RetrofitService retrofitService = new RetrofitService();
         UserApi userApi = retrofitService.getRetrofit().create(UserApi.class);
 
@@ -111,6 +112,13 @@ public class activity_login extends AppCompatActivity {
                 });
             }
         });
-    }
+
 
     }
+    public void onForgotPasswordClicked(View view) {
+        // Handle the click event, e.g., navigate to the ForgotPassword activity
+        Intent intent = new Intent(this, forgotPassword.class);
+        startActivity(intent);
+    }
+
+}

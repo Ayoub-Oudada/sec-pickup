@@ -1,3 +1,4 @@
+import { MapPinIcon } from "@heroicons/react/24/solid";
 import ChartBarIcon from "@heroicons/react/24/solid/ChartBarIcon";
 import CogIcon from "@heroicons/react/24/solid/CogIcon";
 import LockClosedIcon from "@heroicons/react/24/solid/LockClosedIcon";
@@ -22,6 +23,15 @@ export const items = [
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />
+      </SvgIcon>
+    ),
+  },
+  {
+    title: "RUES",
+    path: "/rues",
+    icon: (
+      <SvgIcon fontSize="small">
+        <MapPinIcon />
       </SvgIcon>
     ),
   },
