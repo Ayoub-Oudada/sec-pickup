@@ -50,6 +50,14 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.7.2")
     implementation ("com.squareup.retrofit2:converter-gson:2.7.2")
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
+<<<<<<< HEAD
+    // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    implementation ("com.mysql:mysql-connector-j:8.2.0")
+
+
+
+=======
     implementation ("com.google.maps:google-maps-services:0.19.0")
+>>>>>>> dev
 
 }

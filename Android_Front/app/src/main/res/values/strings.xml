@@ -9,14 +9,20 @@
     <string name="Absent">Absent</string>
     <string name="Recuperer">Recuperer</string>
     <string name="situation">Situation actuelle</string>
+<<<<<<< HEAD
+=======
     <string name="title_activity_visualiser_trajet" translatable="false">Visualiser_Trajet</string>
+>>>>>>> dev
     <string name="nom_utilisateur">Nom d\'utilisateur</string>
     <string name="oldPassword">Ancien mot de passe</string>
     <string name="newPassword">Nouveau mot de passe</string>
     <string name="confirmPassword">Confirmer mot de passe</string>
     <string name="Enregistrer">Enregistrer</string>
     <string name="Annuler">Annuler</string>
+<<<<<<< HEAD
+=======
     <string name="Envoyer">Envoyer</string>
+>>>>>>> dev
 
 
 </resources>

@@ -21,6 +21,14 @@ public class LoadTrajet {
         void onPositionLoaded(Positions position);
         void onFailedToLoadPosition();
     }
+<<<<<<< HEAD
+
+    public interface LoadDistanceCallback {
+        void onDistanceLoaded(Double distance);
+        void onFailedToLoadDistance();
+    }
+=======
+>>>>>>> dev
     List<Positions> positionList=null;
     public List<Positions> loadTrajet(String username, LoadTrajetCallback loadTrajetCallback) {
         RetrofitService retrofitService = new RetrofitService();
@@ -68,4 +76,30 @@ public class LoadTrajet {
                     }
                 });
     }
+<<<<<<< HEAD
+
+    public void loadDistance(String username1,String username2, LoadDistanceCallback loadDistanceCallback) {
+        RetrofitService retrofitService = new RetrofitService();
+        PositionApi positionApi = retrofitService.getRetrofit().create(PositionApi.class);
+        positionApi.GetDistance(username1,username2)
+                .enqueue(new Callback<Double>() {
+                    @Override
+                    public void onResponse(Call<Double> call, Response<Double> response) {
+                        if (response.isSuccessful()) {
+                            Double distance = response.body();
+                            loadDistanceCallback.onDistanceLoaded(distance);
+                            System.err.println(distance);
+                        } else {
+                            loadDistanceCallback.onFailedToLoadDistance();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Double> call, Throwable t) {
+                        loadDistanceCallback.onFailedToLoadDistance();
+                    }
+                });
+    }
+=======
+>>>>>>> dev
 }
