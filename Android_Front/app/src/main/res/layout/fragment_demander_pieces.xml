@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="200dp"
             android:orientation="horizontal">
 
             <TextView
@@ -26,7 +26,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/slateblue"
                 android:textSize="33sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
@@ -61,7 +62,7 @@
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="153dp"
+            android:layout_marginBottom="230dp"
             android:text="Envoyer"
             android:textSize="18sp"/>
 
@@ -69,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnSend"
-            android:layout_marginTop="-140dp"
+            android:layout_marginTop="-210dp"
             android:orientation="horizontal">
 
             <ImageView
