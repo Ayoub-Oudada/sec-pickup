@@ -11,7 +11,7 @@ public class StartTrackingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_location);
+        setContentView(R.layout.assistantebus_mainactivity);
 
         // Assumez que vous avez un bouton avec l'ID "btnStartService" dans votre layout
         Button startServiceButton = findViewById(R.id.btnStartService);

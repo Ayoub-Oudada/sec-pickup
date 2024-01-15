@@ -25,11 +25,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Contenu principal -->
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/eleveList_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="540dp"
         android:layout_below="@id/appBarLayout2"
+        android:layout_marginTop="0dp"
         android:gravity="center_vertical">
 
         <!-- Layout pour chaque page du ViewPager (peut être un fragment ou une vue personnalisée) -->
@@ -42,16 +44,18 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnStartService"
-        android:layout_width="70dp"
-        android:layout_height="85dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="103dp"
+        android:layout_below="@+id/eleveList_recyclerView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="168dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="626dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="163dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/baseline_edit_location_alt_24"
         app:backgroundTint="@color/teal_200"
         app:layout_constraintBottom_toBottomOf="parent"
