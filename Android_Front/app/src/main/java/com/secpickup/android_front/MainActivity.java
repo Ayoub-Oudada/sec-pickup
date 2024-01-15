@@ -20,6 +20,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import android.content.Context;
 import android.widget.EditText;
@@ -27,10 +28,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.secpickup.android_front.modele.Eleve;
+import com.secpickup.android_front.modele.UserAccountType;
+import com.secpickup.android_front.retrofit.AssistanteApi;
+import com.secpickup.android_front.retrofit.RetrofitService;
 
-public class MainActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private static final String TARGET_URL = "http://192.168.1.40:8080/api/users";
+
+public class MainActivity extends AppCompatActivity implements LoadStudent.LoadStudentCallback{
+
+    private static final String TARGET_URL = "http://localhost:8080/api/users";
     private TextView textView;
 
     @Override
@@ -40,17 +50,32 @@ public class MainActivity extends AppCompatActivity {
 
         Button sendDataButton = findViewById(R.id.sendDataButton);
         textView = findViewById(R.id.textViewId);
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         // Vérifiez si l'intention a une valeur associée à la clé spécifique
          if (intent.hasExtra("username") & intent.hasExtra("type")) {
              // Récupérez la valeur à partir de l'intention
              String username = intent.getStringExtra("username");
              String type = intent.getStringExtra("type");
-
+*/
              // Maintenant, vous avez la valeur dans la variable valeurRecue
              // Faites ce que vous voulez avec cette valeur
              // Par exemple, affichez-la dans un TextView
-             textView.setText(username+" "+type);
+
+        LoadStudent loadStudent= new LoadStudent();
+        String username="AssistanteB";
+        String type="ASSISTANTE";
+
+
+
+        loadStudent.loadEleves(username,type,this);
+
+
+        /////////////////////////////////////////////////
+
+
+
+        /////////////////////////////////////////////////
+
              // }
              sendDataButton.setOnClickListener(new View.OnClickListener() {
                  @Override
@@ -64,4 +89,18 @@ public class MainActivity extends AppCompatActivity {
                      // new SendDataAsyncTask().execute(dataToSend);
                  }
              });
-         }}}
+         }
+
+    @Override
+    public void onStudentListLoaded(List<Eleve> eleveList) {
+        String username="AssistanteB";
+        String type="ASSISTANTE";
+        textView.setText(username+" "+type+ eleveList.get(0).getNom());
+
+    }
+
+    @Override
+    public void onFailedToLoadStudents() {
+
+    }
+}

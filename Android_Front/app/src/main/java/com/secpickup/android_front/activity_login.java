@@ -38,6 +38,7 @@ public class activity_login extends AppCompatActivity {
         spinnerOptions = findViewById(R.id.spinner);
         Button postDataButton = findViewById(R.id.login_button);
 
+
         RetrofitService retrofitService = new RetrofitService();
         UserApi userApi = retrofitService.getRetrofit().create(UserApi.class);
 
@@ -74,11 +75,21 @@ public class activity_login extends AppCompatActivity {
 
                                 Toast.makeText(activity_login.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                                 //demarrer une page
+                                if(type=="PARENT"){
                                 Intent intent= new Intent(getApplicationContext(), EleveList_Activity.class);
                                 intent.putExtra("username", username);
                                 intent.putExtra("type", type);
                                 startActivity(intent);
                                 finish();
+                                }
+                                if(type=="ASSISTANTE"){
+                                    Intent intent= new Intent(getApplicationContext(), assistantebusmain.class);
+                                    intent.putExtra("username", username);
+                                    intent.putExtra("type", type);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
                             } else {
 
                                 Toast.makeText(activity_login.this, "Empty response body", Toast.LENGTH_SHORT).show();
@@ -101,6 +112,13 @@ public class activity_login extends AppCompatActivity {
                 });
             }
         });
-    }
+
 
     }
+    public void onForgotPasswordClicked(View view) {
+        // Handle the click event, e.g., navigate to the ForgotPassword activity
+        Intent intent = new Intent(this, forgotPassword.class);
+        startActivity(intent);
+    }
+
+}

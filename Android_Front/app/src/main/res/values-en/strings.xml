@@ -11,4 +11,11 @@
     <string name="Recuperer">Pick up</string>
     <string name="situation">Curent situation</string>
     <string name="nom_utilisateur">Username</string>
+    <string name="oldPassword" >Ancien mot de passe</string>
+    <string name="newPassword" >Nouveau mot de passe</string>
+    <string name="confirmPassword" >Confirmer mot de passe</string>
+    <string name="Enregistrer" >Enregistrer</string>
+    <string name="Annuler" >Annuler</string>
+    <string name="Envoyer">Envoyer</string>
+
 </resources>

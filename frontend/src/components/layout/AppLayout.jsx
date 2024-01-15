@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { TopNav } from "./top-nav";
 import { Outlet, useLocation } from "react-router-dom";
 import { SideNav } from "./side-nav";
-import RequireAuth from "../auth/RequireAuth";
 
 const SIDE_NAV_WIDTH = 280;
 
@@ -42,7 +41,6 @@ const AppLayout = () => {
   );
 
   return (
-    // <RequireAuth>
     <>
       <TopNav onNavOpen={() => setOpenNav(true)} />
       <SideNav onClose={() => setOpenNav(false)} open={openNav} />
@@ -52,7 +50,6 @@ const AppLayout = () => {
         </LayoutContainer>
       </LayoutRoot>
     </>
-    // </RequireAuth>
   );
 };
 

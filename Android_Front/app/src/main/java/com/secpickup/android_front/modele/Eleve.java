@@ -11,12 +11,24 @@ public class Eleve extends BaseEntity {
     private String nom;
     private String prenom;
 
+    public Eleve(String position) {
+        this.position = position;
+    }
 
     private Date dateDeNaissance;
 
     private int niveau;
     private String cne;
     private String domicile;
+    private String position;
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
     @Override
     public String toString() {
@@ -99,11 +111,11 @@ public class Eleve extends BaseEntity {
         this.address = address;
     }
 
-    public Situation getSituation() {
+    public String getSituation() {
         return situation;
     }
 
-    public void setSituation(Situation situation) {
+    public void setSituation(String situation) {
         this.situation = situation;
     }
 
@@ -130,7 +142,7 @@ public class Eleve extends BaseEntity {
 
 
 
-   private Situation situation;
+   private String situation;
 
 
     private Ecole ecole;

@@ -4,6 +4,8 @@ import ErrorPage from "../error-page";
 import { assistantesRoutes } from "./assistantes";
 import { authRoutes } from "./auth";
 import { parentRoutes } from "./parents";
+import { rueRoutes } from "./rues";
+import { trajetsRoutes } from "./trajets";
 
 export const mainRoutes = [
   {
@@ -12,7 +14,7 @@ export const mainRoutes = [
       {
         path: "/",
         element: <AppLayout />,
-        children: [...parentRoutes,...assistantesRoutes],
+        children: [...parentRoutes, ...trajetsRoutes, ...assistantesRoutes, ...rueRoutes],
       },
       {
         path: "/auth",

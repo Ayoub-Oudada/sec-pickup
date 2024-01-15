@@ -13,7 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useCallback, useState } from "react";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect, useActionData, useLoaderData } from "react-router-dom";
 
 export async function action({ request, params }) {
   console.log("test");
@@ -34,23 +34,10 @@ export async function action({ request, params }) {
 }
 
 export const Update = (request, params) => {
-  const states = useLoaderData();
 
-  const [values, setValues] = useState({
-    firstName: "Anika",
-    lastName: "Visser",
-    email: "demo@devias.io",
-  });
+  const assistante = useLoaderData();
+  const data = useActionData();
 
-   const handleChange = useCallback(
-        (event) => {
-        setValues((prevState) => ({
-            ...prevState,
-            [event.target.name]: event.target.value
-        }));
-        },
-        []
-    );
 
   return (
     <>
@@ -67,7 +54,7 @@ export const Update = (request, params) => {
         <Container maxWidth="lg">
           <Stack spacing={3}>
             <div>
-              <Typography variant="h4">Account</Typography>
+              <Typography variant="h4">Assistante</Typography>
             </div>
             <div>
               <Grid container spacing={4}>
@@ -84,22 +71,23 @@ export const Update = (request, params) => {
                             <Grid xs={12} md={6}>
                               <TextField
                                 fullWidth
-                                helperText="Veuillez préciser le prénom."
                                 label="prenom"
-                                name="firstName"
+                                name="prenom"
                                 required
-                                onChange={handleChange}
-                                value={values.firstName}
+                                defaultValue={assistante.prenom}
+                                error={data?.error && data?.error?.prenom}
+                                helperText={data?.error?.prenom}
                               />
                             </Grid>
                             <Grid xs={12} md={6}>
                               <TextField
                                 fullWidth
                                 label="nom"
-                                name="lastName"
+                                name="nom"
                                 required
-                                onChange={handleChange}
-                                value={values.lastName}
+                                defaultValue={assistante.nom}
+                                error={data?.error && data?.error?.nom}
+                                helperText={data?.error?.nom}
                               />
                             </Grid>
                             <Grid xs={12} md={6}>
@@ -108,8 +96,20 @@ export const Update = (request, params) => {
                                 label="Adresse email"
                                 name="email"
                                 required
-                                onChange={handleChange}
-                                value={values.email}
+                                defaultValue={assistante.email}
+                                error={data?.error && data?.error?.email}
+                                helperText={data?.error?.email}
+                              />
+                            </Grid>
+                            <Grid xs={12} md={6}>
+                              <TextField
+                                defaultValue={assistante.cni}
+                                error={data?.error && data?.error?.cni}
+                                helperText={data?.error?.cni}
+                                fullWidth
+                                label="Cni"
+                                name="cni"
+                                type="text"
                               />
                             </Grid>
                           </Grid>
