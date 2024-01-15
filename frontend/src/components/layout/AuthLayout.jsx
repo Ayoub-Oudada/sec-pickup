@@ -68,7 +68,7 @@ const AuthLayout = () => {
             >
               Welcome to{" "}
               <Box component="a" sx={{ color: "#" }} target="_blank">
-                Devias Kit
+                Sec pickup
               </Box>
             </Typography>
             <Typography
@@ -76,7 +76,7 @@ const AuthLayout = () => {
               sx={{ mb: 3, color: "white" }}
               variant="subtitle1"
             >
-              A professional kit that comes with ready-to-use MUI components.
+              The plateform to guarante your kids safety
             </Typography>
             {/* <img alt="" src="/pexels-lil-artsy-3427702.jpg" /> */}
           </Box>

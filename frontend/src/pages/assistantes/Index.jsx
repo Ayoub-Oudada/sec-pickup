@@ -23,13 +23,12 @@ const useAssistantes = (page, rowsPerPage, data) => {
   }, [page, rowsPerPage, data]);
 };
 
-const fields = ["id", "email", "nom", "prenom", "cni"];
+const fields = [{label:"id", ident:"id"}, {label:"email", ident:"email"}, {label:"nom", ident:"nom"}, {label:"prenom", ident:"cni"}];
 
 
 const Index = () => {
 
   const data = useLoaderData();
-  console.log(data);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const Assistantes = useAssistantes(page, rowsPerPage, data);

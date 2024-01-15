@@ -48,7 +48,7 @@ export const SideNav = (props) => {
               height: 100,
             }}
           >
-            <img src="./logo.png" />
+            <img src="/logo.png" />
           </Box>
           <Box
             sx={{

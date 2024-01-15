@@ -84,7 +84,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/signUpRedirectText"
+                android:id="@+id/ForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="53dp"
                 android:layout_gravity="center"
@@ -92,7 +92,8 @@
                 android:padding="8dp"
                 android:text="@string/forgetpw"
                 android:textColor="@color/slateblue"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="onForgotPasswordClicked"/>
 
         </LinearLayout>
 

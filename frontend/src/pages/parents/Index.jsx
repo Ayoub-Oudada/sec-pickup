@@ -20,7 +20,7 @@ const useParents = (page, rowsPerPage, data) => {
   }, [page, rowsPerPage, data]);
 };
 
-const fields = ["id", "email", "nom", "prenom", "cni", "tph"];
+const fields = [{label:"id", ident:"id"}, {label:"email", ident:"email"}, {label:"nom", ident:"nom"}, { label:"prenom", ident:"prenom"}, {label:"cni", ident:"cni"}, {label:"tph",ident:"cni"}];
 
 const Index = () => {
   const data = useLoaderData();

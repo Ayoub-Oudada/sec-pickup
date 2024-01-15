@@ -1,4 +1,4 @@
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { PencilIcon, TrashIcon, EyeIcon } from "@heroicons/react/24/solid";
 import {
   Box,
   Button,
@@ -26,6 +26,7 @@ export const CustomTable = (props) => {
     page = 0,
     rowsPerPage = 0,
     actions,
+    showAction,
   } = props;
 
   return (
@@ -36,7 +37,7 @@ export const CustomTable = (props) => {
             <TableHead>
               <TableRow>
                 {fields.map((field, index) => (
-                  <TableCell key={index}>{field}</TableCell>
+                  <TableCell key={index}>{field.label}</TableCell>
                 ))}
                 <TableCell>actions</TableCell>
               </TableRow>
@@ -46,10 +47,18 @@ export const CustomTable = (props) => {
                 return (
                   <TableRow hover key={item.id}>
                     {fields.map((field, index) => (
+                  
                       <TableCell key={index}>
-                        <Typography variant="subtitle2">
-                          {item[field]}
+                        { (Array.isArray(field.ident) && item[field.ident[0]]!=null) ?  
+                          <Typography variant="subtitle2">
+                            {item[field.ident[0]][field.ident[1]]}
                         </Typography>
+                        :  
+                        <Typography variant="subtitle2">
+                          {item[field.ident]}
+                        </Typography>
+                        }
+
                       </TableCell>
                     ))}
                     <TableCell
@@ -66,6 +75,15 @@ export const CustomTable = (props) => {
                           </SvgIcon>
                         </Button>
                       </Link>
+                      {showAction && (
+                        <Link to={actions.showDetails(item.id)}>
+                          <Button variant="contained" color={"info"}>
+                            <SvgIcon fontSize="small">
+                              <EyeIcon />
+                            </SvgIcon>
+                          </Button>
+                        </Link>
+                      )}
 
                       <Form
                         method="delete"
@@ -116,6 +134,7 @@ CustomTable.propTypes = {
   page: PropTypes.number,
   rowsPerPage: PropTypes.number,
   actions: PropTypes.object,
+  showAction: PropTypes.bool,
 };
 
 export default CustomTable;
