@@ -9,13 +9,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.secpickup.android_front.fragments.ChangerMDPFragment;
 import com.secpickup.android_front.fragments.ContacterEcoleFragment;
 import com.secpickup.android_front.fragments.DemanderPiecesFragment;
-import com.secpickup.android_front.fragments.HomeFragment;
+import com.secpickup.android_front.fragments.HomeFragmentAssistante;
+import com.secpickup.android_front.fragments.HomeFragmentParent;
+import com.secpickup.android_front.fragments.SignalerAnomalieFragment;
+import com.secpickup.android_front.fragments.VisualiserTrajetFragment;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,32 +43,72 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragmentAssistante()).commit();
+            } else {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragmentParent()).commit();
+            }
             navigationView.setCheckedItem(R.id.nav_home);
+
+            // Cacher les options pour ASSISTANTE
+            if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
+                Menu menu = navigationView.getMenu();
+                menu.findItem(R.id.nav_demander_pieces).setVisible(false);
+                menu.findItem(R.id.nav_contacter_ecole).setVisible(false);
+                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(false);  // Ajout
+                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(true);   // Ajout
+            } else {
+                Menu menu = navigationView.getMenu();
+                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(true);   // Ajout
+                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(false);  // Ajout
+            }
         }
+
+
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragmentAssistante()).commit();
+                } else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragmentParent()).commit();
+                }
                 break;
-//            case R.id.nav_demo:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-//                break;
 
             case R.id.nav_demander_pieces:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DemanderPiecesFragment()).commit();
+                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DemanderPiecesFragment()).commit();
+                }
                 break;
 
             case R.id.nav_contacter_ecole:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContacterEcoleFragment()).commit();
+                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContacterEcoleFragment()).commit();
+                }
+                break;
+
+            case R.id.nav_Visualier_Trajet:
+                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VisualiserTrajetFragment()).commit();
+                }
+                break;
+
+            case R.id.nav_Signaler_Annomalie:
+                if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SignalerAnomalieFragment()).commit();
+                }
                 break;
 
             case R.id.nav_chnager_mdp:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
                 break;
+
+//            case R.id.nav_demo:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
+//                break;
 
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();

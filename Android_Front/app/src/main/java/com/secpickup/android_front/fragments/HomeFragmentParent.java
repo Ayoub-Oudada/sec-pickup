@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
+public class HomeFragmentParent extends Fragment {
 
     private RecyclerView recyclerView;
     private EleveAdapter eleveAdapter;

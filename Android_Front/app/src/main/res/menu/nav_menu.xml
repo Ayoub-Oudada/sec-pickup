@@ -13,6 +13,16 @@
             android:title="Home"/>
 
         <item
+            android:id="@+id/nav_Visualier_Trajet"
+            android:icon="@drawable/baseline_directions_bus_24"
+            android:title="Visualier Trajet"/>
+
+        <item
+            android:id="@+id/nav_Signaler_Annomalie"
+            android:icon="@drawable/baseline_new_releases_24"
+            android:title="Signaler Annomalie"/>
+
+        <item
             android:id="@+id/nav_demander_pieces"
             android:icon="@drawable/baseline_insert_drive_file_24"
             android:title="Demander Pièces"/>
