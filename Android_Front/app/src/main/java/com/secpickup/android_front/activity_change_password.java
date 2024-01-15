@@ -63,7 +63,6 @@ public class activity_change_password extends AppCompatActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(activity_change_password.this, "Password changed successfully", Toast.LENGTH_SHORT).show();
-//                            finish(); // Close the activity after successful password change
                         } else {
                             int statusCode = response.code();
                             Log.e("Error", "Error Code: " + statusCode);

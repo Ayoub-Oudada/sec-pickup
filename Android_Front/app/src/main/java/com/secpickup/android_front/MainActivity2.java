@@ -6,6 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Environment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,10 +30,14 @@ import com.secpickup.android_front.fragments.HomeFragmentAssistante;
 import com.secpickup.android_front.fragments.HomeFragmentParent;
 import com.secpickup.android_front.fragments.SignalerAnomalieFragment;
 import com.secpickup.android_front.fragments.VisualiserTrajetFragment;
+import com.secpickup.android_front.retrofit.RetrofitService;
+
+import okhttp3.ResponseBody;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private long downloadId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +64,16 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             }
             navigationView.setCheckedItem(R.id.nav_home);
 
-            // Cacher les options pour ASSISTANTE
             if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
                 Menu menu = navigationView.getMenu();
                 menu.findItem(R.id.nav_demander_pieces).setVisible(false);
                 menu.findItem(R.id.nav_contacter_ecole).setVisible(false);
-                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(false);  // Ajout
-                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(true);   // Ajout
+                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(false);
+                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(true);
             } else {
                 Menu menu = navigationView.getMenu();
-                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(true);   // Ajout
-                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(false);  // Ajout
+                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(true);
+                menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(false);
             }
         }
 
@@ -106,9 +119,10 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
                 break;
 
-//            case R.id.nav_demo:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
-//                break;
+            case R.id.nav_demo:
+                startDownload("https://drive.google.com/file/d/1CuDRpPivtY5pCy-GAru0NxjP1m9yP6AD/view?usp=sharing"); // Remplacez URL_DU_FICHIER_PDF par l'URL réelle du fichier PDF
+                break;
+
 
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
@@ -126,5 +140,30 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     }
 
 
+    private void savePdfFile(ResponseBody body) {
+        Toast.makeText(MainActivity2.this, "PDF Downloaded successfully", Toast.LENGTH_SHORT).show();
+    }
+    private void startDownload(String fileUrl) {
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(fileUrl));
+        request.setTitle("SecPickUp_Demo");
+        request.setDescription("Téléchargement en cours");
 
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "SecPickUp_Demo.pdf");
+
+        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+
+        downloadId = downloadManager.enqueue(request);
+
+        registerReceiver(new DownloadCompleteReceiver(), new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    }
+
+    // BroadcastReceiver pour gérer la fin du téléchargement
+    private class DownloadCompleteReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+            if (id == downloadId) {
+            }
+        }
+    }
 }

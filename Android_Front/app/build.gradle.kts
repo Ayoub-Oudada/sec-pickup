@@ -47,5 +47,4 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
     testImplementation ("org.mockito:mockito-core:5.6.0")
     androidTestImplementation ("org.mockito:mockito-android:5.6.0")
-
 }

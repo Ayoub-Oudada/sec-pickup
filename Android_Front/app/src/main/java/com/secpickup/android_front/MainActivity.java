@@ -50,16 +50,7 @@ public class MainActivity extends AppCompatActivity implements LoadStudent.LoadS
 
         Button sendDataButton = findViewById(R.id.sendDataButton);
         textView = findViewById(R.id.textViewId);
-        /*Intent intent = getIntent();
-        // Vérifiez si l'intention a une valeur associée à la clé spécifique
-         if (intent.hasExtra("username") & intent.hasExtra("type")) {
-             // Récupérez la valeur à partir de l'intention
-             String username = intent.getStringExtra("username");
-             String type = intent.getStringExtra("type");
-*/
-             // Maintenant, vous avez la valeur dans la variable valeurRecue
-             // Faites ce que vous voulez avec cette valeur
-             // Par exemple, affichez-la dans un TextView
+
 
         LoadStudent loadStudent= new LoadStudent();
         String username="AssistanteB";
@@ -70,23 +61,17 @@ public class MainActivity extends AppCompatActivity implements LoadStudent.LoadS
         loadStudent.loadEleves(username,type,this);
 
 
-        /////////////////////////////////////////////////
 
 
 
-        /////////////////////////////////////////////////
 
-             // }
              sendDataButton.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View view) {
-                     // Récupérez vos données à envoyer
                      String dataToSend = "Hello from Android App";
                      Toast.makeText(MainActivity.this, dataToSend, Toast.LENGTH_SHORT).show();
 
 
-                     // Exécutez la tâche asynchrone pour envoyer les données
-                     // new SendDataAsyncTask().execute(dataToSend);
                  }
              });
          }

@@ -26,7 +26,6 @@ public class ChangerMDPFragment extends Fragment {
     private EditText oldPasswordEditText, newPasswordEditText, confirmPasswordEditText;
 
     public ChangerMDPFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -66,7 +65,6 @@ public class ChangerMDPFragment extends Fragment {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(getActivity(), "Password changed successfully", Toast.LENGTH_SHORT).show();
-                            // Finish the fragment or perform any desired action upon successful password change
                         } else {
                             int statusCode = response.code();
                             Log.e("Error", "Error Code: " + statusCode);

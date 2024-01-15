@@ -42,17 +42,14 @@ public class HomeFragmentParent extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize your views here
         recyclerView = view.findViewById(R.id.eleveList_recyclerView);
 
-        // Get data from Intent or other sources if needed
         Intent intent = getActivity().getIntent();
         if (intent.hasExtra("username") && intent.hasExtra("type")) {
             username = intent.getStringExtra("username");
             type = intent.getStringExtra("type");
         }
 
-        // Set up RecyclerView and load data
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
