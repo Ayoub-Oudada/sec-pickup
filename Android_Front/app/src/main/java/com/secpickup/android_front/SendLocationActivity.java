@@ -1,122 +1,68 @@
 package com.secpickup.android_front;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.viewpager.widget.ViewPager;
-
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.secpickup.android_front.Adapter.Assistantepageradapter;
-import com.secpickup.android_front.modele.Eleve;
+import com.secpickup.android_front.modele.EleveDto;
 import com.secpickup.android_front.modele.Positions;
+import com.secpickup.android_front.retrofit.EleveApi;
 import com.secpickup.android_front.retrofit.PositionApi;
 import com.secpickup.android_front.retrofit.RetrofitService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class assistantebusmain extends AppCompatActivity implements LoadStudent.LoadStudentCallback {
+public class SendLocationActivity extends AppCompatActivity {
 
-    private List<Eleve> childrenList;
-    private Assistantepageradapter pagerAdapter;
-    String username;
-    String type;
-    //////////// SAIDI///////////////
     private LocationManager locationManager;
     private double latitude = 0.0;
     private double longitude = 0.0;
+    private  String username=null;
     private Handler handler;
     private TextView textView;
-    private LocationListener locationListener;
+    private LocationListener locationListener; // Déplacez la déclaration ici
 
-
-    //////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.assistantebus_mainactivity);
-        //////////////////saidi/////////////////
-        FloatingActionButton startServiceButton = findViewById(R.id.btnStartService);
+        setContentView(R.layout.activity_send_location);
+        textView = findViewById(R.id.textViewloc);
+
         handler = new Handler();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        ///////////////////////////////////////
-
-
-
-        childrenList = new ArrayList<>();
-
-        Intent intent = getIntent();
-        if (intent.hasExtra("username") && intent.hasExtra("type")) {
-            username = intent.getStringExtra("username");
-            type = intent.getStringExtra("type");
+        // Vérifiez les autorisations avant de demander les mises à jour de localisation
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Demander la permission
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        } else {
+            // Les autorisations sont déjà accordées
+            startLocationUpdates();
         }
-
-
-
-        LoadStudent loadStudent = new LoadStudent();
-        loadStudent.loadEleves(username,type,this);
-        pagerAdapter = new Assistantepageradapter(this, childrenList);
-        pagerAdapter.setOnButtonClickListener(new Assistantepageradapter.OnButtonClickListener() {
-            @Override
-            public void onButtonClick(int position, String situation) {
-
-            }
-        });
-
-        ViewPager viewPager = findViewById(R.id.eleveList_recyclerView);
-        viewPager.setAdapter(pagerAdapter);
-
-
-        ////////////////////SAIDI//////////////
-
-        startServiceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lancez le service en cliquant sur le bouton
-                startLocationUpdates();
-                Toast.makeText(assistantebusmain.this, "Vous avez cliqué sur Tracking", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        /////////////////////////////////////
-
     }
 
-    @Override
-    public void onStudentListLoaded(List<Eleve> eleveList) {
-        childrenList.clear();
-        for (Eleve eleve : eleveList) {
-            if (eleve != null) {
-                childrenList.add(eleve);
-            }
-        }        pagerAdapter.notifyDataSetChanged();
-
-
-    }
-
-    @Override
-    public void onFailedToLoadStudents() {
-
-    }
-    ////////////////////////SAIDI//////////////////
     private void startLocationUpdates() {
         locationListener = new LocationListener() {
             @Override
@@ -144,7 +90,7 @@ public class assistantebusmain extends AppCompatActivity implements LoadStudent.
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 10, locationListener);
     }
 
-    private void updateDatabase(final double lat, final double lon,final String username) {
+    private void updateDatabase(final double lat, final double lon, final String username) {
         // Utilisez un AsyncTask pour effectuer des opérations de base de données en arrière-plan
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -157,13 +103,13 @@ public class assistantebusmain extends AppCompatActivity implements LoadStudent.
                     positionApi.registerPosition(new Positions(lat,lon,username)).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
-                            Toast.makeText(assistantebusmain.this, "onResponse Test", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SendLocationActivity.this, "onResponse Test", Toast.LENGTH_SHORT).show();
 
                         }
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-                            Toast.makeText(assistantebusmain.this, "onFailure Test "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                           Toast.makeText(SendLocationActivity.this, "onFailure Test "+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -176,16 +122,22 @@ public class assistantebusmain extends AppCompatActivity implements LoadStudent.
         }.execute();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Arrêtez les mises à jour de localisation lorsque l'activité est détruite
+        if (locationManager != null && locationListener != null) {
+            locationManager.removeUpdates(locationListener);
+        }
+    }
+
     private void showToast(final String message) {
         // Utilisez un Handler pour afficher le message Toast sur le thread principal
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(assistantebusmain.this, message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SendLocationActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
-    /////////////////////////////////////////////
 }
