@@ -58,7 +58,7 @@ const storeTrajet = async ({ request }) => {
 };
 
 const trajetWithRuesLoader = async ({ params }) => {
-  const rues = await api.get(`/api/rues`);
+  const rues = await api.get(`/api/rues/unattached`);
   const trajet = await api.get("/api/trajets/" + params.trajetId);
   console.log(trajet);
   return { trajet: trajet.data, rues: rues.data };
