@@ -20,10 +20,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyAM62zi6ulD1s5mnU7H_5FoANiyqGhAZPk" />
 
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".Visualiser_Trajet"
             android:exported="false"
             android:label="@string/title_activity_visualiser_trajet" />
         <activity
@@ -36,7 +36,7 @@
             android:name=".activity_change_password"
             android:exported="false" />
         <activity
-            android:name=".Visualiser_Trajet"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

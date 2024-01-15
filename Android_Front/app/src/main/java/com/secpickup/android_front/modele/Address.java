@@ -3,10 +3,11 @@ package com.secpickup.android_front.modele;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Address extends BaseEntity {
+public class Address extends BaseEntity implements Serializable {
     private String rue;
     private String immeuble;
     private String codePostal;

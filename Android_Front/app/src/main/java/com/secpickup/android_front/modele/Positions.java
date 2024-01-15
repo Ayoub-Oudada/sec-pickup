@@ -1,8 +1,9 @@
 package com.secpickup.android_front.modele;
 
 
+import java.io.Serializable;
 
-public class Positions extends BaseEntity{
+public class Positions extends BaseEntity implements Serializable {
 
     private double latitude;
     private double longitude;
