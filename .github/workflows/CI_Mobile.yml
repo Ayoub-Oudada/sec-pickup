@@ -1,9 +1,11 @@
 name: CI
+
 on:
   push:
     branches:
       - main
       - dev
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -29,9 +31,45 @@ jobs:
           lint_report=$(find Android_Front -type f -name "lint-results-debug.html")
           echo "Lint report found at: $lint_report"
           echo "Lint report path=$lint_report" >> $GITHUB_ENV
+      
 
       - name: Upload html test report
         uses: actions/upload-artifact@v2
         with:
           name: lint.html
           path: Android_Front/app/build/reports/lint-results-debug.html
+
+  unit-test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
+
+  instrumentation-test:
+    needs: unit-test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected/
