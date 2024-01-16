@@ -120,7 +120,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.nav_demo:
-                startDownload("https://drive.google.com/file/d/1WPGgq-ed55jE7xwQ7zXBP3j3DKivMgVX/view?usp=sharing"); // Remplacez URL_DU_FICHIER_PDF par l'URL réelle du fichier PDF
+                startDownload("https://drive.usercontent.google.com/u/0/uc?id=1jmR7hsLLLg1SBSIFj2QhdKNPDXF8w_me&export=download");
                 break;
 
 
@@ -145,10 +145,10 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     }
     private void startDownload(String fileUrl) {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(fileUrl));
-        request.setTitle("SecPickUp_Demo");
+        request.setTitle("Demo-Secpickup");
         request.setDescription("Téléchargement en cours");
 
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "SecPickUp_Demo.pdf");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Demo-Secpickup.pdf");
 
         DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 
