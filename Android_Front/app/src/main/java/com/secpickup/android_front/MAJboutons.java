@@ -13,10 +13,8 @@ public class MAJboutons {
     }
 
     public void updateButtonColors(Button btnRecuperer, Button btnDeposer, Button btnAbsent, String situation) {
-        // Réinitialisez toutes les couleurs à leur état d'origine
         resetButtonColors(btnRecuperer, btnDeposer, btnAbsent);
 
-        // Changez la couleur et l'état activé des boutons en fonction de la situation
         if ("DEPOSER".equals(situation)) {
             setButtonDisabledAndGrey(btnDeposer);
             setButtonEnabledAndGreen(btnRecuperer, btnAbsent);

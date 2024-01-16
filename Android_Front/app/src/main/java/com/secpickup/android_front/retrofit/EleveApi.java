@@ -21,11 +21,6 @@ public interface EleveApi {
             @Query("type") UserAccountType type
     );
 
-    //@PUT("/api/eleves/update/{eleveId}")
-   // public void update(@Path("eleveId") Long eleveId,
-        //               @Body String eleveDto);
-
-
     @PUT("/api/eleves/update/{eleveId}")
     Call<Void> update(@Path("eleveId") Long eleveId, @Body EleveDto situation);
 }

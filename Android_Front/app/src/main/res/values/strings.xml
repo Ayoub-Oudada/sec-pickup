@@ -9,16 +9,14 @@
     <string name="Absent">Absent</string>
     <string name="Recuperer">Recuperer</string>
     <string name="situation">Situation actuelle</string>
-<<<<<<< HEAD
-=======
     <string name="title_activity_visualiser_trajet" translatable="false">Visualiser_Trajet</string>
->>>>>>> dev
     <string name="nom_utilisateur">Nom d\'utilisateur</string>
     <string name="oldPassword">Ancien mot de passe</string>
     <string name="newPassword">Nouveau mot de passe</string>
     <string name="confirmPassword">Confirmer mot de passe</string>
     <string name="Enregistrer">Enregistrer</string>
     <string name="Annuler">Annuler</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <string name="Envoyer">Envoyer</string>
 =======
@@ -27,6 +25,12 @@
     <string name="Envoyer">Envoyer</string>
 >>>>>>> dev
 >>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
+=======
+    <string name="open_nav" translatable="false">Open Navigation Drawer</string>
+    <string name="close_nav" translatable="false">Close Navigation Drawer</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="Envoyer">Envoyer</string>
+>>>>>>> 78d3ecd12a266062ced316b8e37ab82221850236
 
 
 </resources>

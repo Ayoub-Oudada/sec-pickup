@@ -16,7 +16,6 @@ import { useCallback, useState } from "react";
 import { Form, redirect, useActionData, useLoaderData } from "react-router-dom";
 
 export async function action({ request, params }) {
-  console.log("test");
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
 

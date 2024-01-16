@@ -7,50 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".EleveList_Activity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/app_bar_menu"
-            app:navigationIcon="@drawable/baseline_menu_24"
-            app:title="Parent_Profil"
-            app:layout_collapseMode="pin" />
-    </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eleveList_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/bouton_Visualiser_trajet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="638dp"
-        android:gravity="center"
-        android:text="visualiser trajet"
-        app:layout_constraintBaseline_toBottomOf="@id/eleveList_recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eleveList_recyclerView"
-        tools:ignore="MissingConstraints">
-
-    </Button>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnStartService"
@@ -65,8 +26,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.946"
         tools:ignore="MissingConstraints"
-        app:useCompatPadding="true"
-    />
+        app:useCompatPadding="true" />
 
     <TextView
         android:id="@+id/textViewId"

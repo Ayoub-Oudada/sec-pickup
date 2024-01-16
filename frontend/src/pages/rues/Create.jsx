@@ -69,7 +69,6 @@ const Create = () => {
                                 error={data?.error && data?.error?.trajet}
                                 helperText={data?.error?.trajet}
                                 SelectProps={{ native: true }}
-                                required
                               >
 
                                

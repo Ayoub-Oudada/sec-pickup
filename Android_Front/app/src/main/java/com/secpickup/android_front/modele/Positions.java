@@ -1,24 +1,21 @@
 package com.secpickup.android_front.modele;
 
 
-<<<<<<< HEAD
 import com.google.android.gms.maps.model.LatLng;
 
 public class Positions extends BaseEntity{
-=======
-import java.io.Serializable;
-
-public class Positions extends BaseEntity implements Serializable {
->>>>>>> dev
 
     private double latitude;
     private double longitude;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 
 >>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
+=======
+>>>>>>> 78d3ecd12a266062ced316b8e37ab82221850236
     public double getLatitude() {
         return latitude;
     }
@@ -37,6 +34,7 @@ public class Positions extends BaseEntity implements Serializable {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
 =======
 
@@ -51,3 +49,6 @@ public class Positions extends BaseEntity implements Serializable {
 >>>>>>> dev
 }
 >>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
+=======
+    }
+>>>>>>> 78d3ecd12a266062ced316b8e37ab82221850236

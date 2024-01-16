@@ -19,6 +19,7 @@ android {
 
     buildTypes {
         release {
+
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -35,7 +36,7 @@ android {
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     testImplementation("junit:junit:4.13.2")
@@ -47,18 +48,18 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation ("androidx.cardview:cardview:1.0.0")
-    implementation ("com.squareup.retrofit2:retrofit:2.7.2")
-    implementation ("com.squareup.retrofit2:converter-gson:2.7.2")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
-<<<<<<< HEAD
-    // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
+    testImplementation ("org.mockito:mockito-core:5.6.0")
+    androidTestImplementation ("org.mockito:mockito-android:5.6.0")
+    implementation ("com.google.maps:google-maps-services:0.19.0")
     implementation ("com.mysql:mysql-connector-j:8.2.0")
     implementation ("com.google.maps:google-maps-services:0.19.0")
 
-
-
-=======
-    implementation ("com.google.maps:google-maps-services:0.19.0")
->>>>>>> dev
-
 }
+
+
+
+
+

@@ -105,6 +105,11 @@ export const rueRoutes = [
     action: storeRue,
     loader: rueCreateLoader,
   },
+  // {
+  //   path: "/rues/rue-adresses/:trajetId",
+  //   element: <TrajetRuesDetails />,
+  //   loader: requireAuth(trajetWithRuesLoader),
+  // },
   {
     path: "/rues/:rueId/delete",
     action: deleteRue,

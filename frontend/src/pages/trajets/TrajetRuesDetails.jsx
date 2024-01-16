@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { PlusIcon } from "@heroicons/react/24/solid";
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -12,8 +13,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Divider,
   FormControl,
+  FormHelperText,
   Grid,
   InputLabel,
   MenuItem,
@@ -30,7 +31,7 @@ import api from "../../utils/api";
 const TrajetRuesDetails = () => {
   const { trajet, rues: allRues } = useLoaderData();
   const { trajetId } = useParams();
-  const [current, setCurrent] = useState(trajet.rues[0].id);
+  const [current, setCurrent] = useState(trajet?.rues[0]?.id);
   const [open, setOpen] = useState(false);
   const [currentRue, setCurrentRue] = useState(
     ...trajet.rues.filter((rue) => rue.id == current)
@@ -88,6 +89,11 @@ const TrajetRuesDetails = () => {
                 alignItems: "center",
               }}
             >
+              {!current && (
+                <Alert severity="info">
+                  This trajet has no rues attached to it!
+                </Alert>
+              )}
               <Box>
                 {trajet.rues.map((rue, index) => (
                   <RueItem
@@ -101,31 +107,38 @@ const TrajetRuesDetails = () => {
                   />
                 ))}
               </Box>
-              <Card>
-                <CardHeader sx={{ pb: 7 }} title="Rue informations" />
-                <CardContent
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    pt: 0,
-                  }}
-                >
-                  <Grid container gap={3}>
-                    <InputLabel>Libelle rue </InputLabel>
-                    <Grid xs={12}>
-                      <TextField
-                        disabled
-                        fullWidth
-                        value={currentRue?.lib_rue}
-                      />
+              {current && (
+                <Card>
+                  <CardHeader sx={{ pb: 7 }} title="Rue informations" />
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      pt: 0,
+                    }}
+                  >
+                    <Grid container gap={3}>
+                      <Grid xs={12}>
+                        <TextField
+                          label="Libelle rue"
+                          disabled
+                          fullWidth
+                          value={currentRue?.lib_rue}
+                        />
+                      </Grid>
+                      <Grid xs={12}>
+                        {/* <InputLabel>Libelle trajet </InputLabel> */}
+                        <TextField
+                          label="Libelle trajet"
+                          disabled
+                          fullWidth
+                          value={trajet?.libTrajet}
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid xs={12}>
-                      <InputLabel>Libelle trajet </InputLabel>
-                      <TextField disabled fullWidth value={trajet.libTrajet} />
-                    </Grid>
-                  </Grid>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              )}
             </CardContent>
           </Card>
         </Container>
@@ -197,16 +210,17 @@ const CustomDialog = ({ open, setOpen, rues, currTrajet }) => {
     setOpen(false);
   };
   const [selectVal, setSelectedVal] = useState("");
-  useEffect(() => {
-    console.log(selectVal);
-  }, [selectVal]);
+  const [showError, setShowError] = useState(false);
 
   const submit = async () => {
-    await api.put("/api/rues/" + selectVal.id, {
-      trajetId: currTrajet,
-      lib_rue: selectVal.lib_rue,
-    });
-    setOpen(false);
+    if (!selectVal) setShowError(true);
+    else {
+      await api.put("/api/rues/" + selectVal.id, {
+        trajetId: currTrajet,
+        lib_rue: selectVal.lib_rue,
+      });
+      setOpen(false);
+    }
   };
 
   return (
@@ -225,12 +239,15 @@ const CustomDialog = ({ open, setOpen, rues, currTrajet }) => {
           <DialogContentText id="alert-dialog-slide-description">
             You can attach any rue to your trajet, so please select a trajet.
           </DialogContentText>
+          {showError && (
+            <FormHelperText error>please select a rue</FormHelperText>
+          )}
           <FormControl variant="filled" sx={{ mt: 3, mb: 3 }} fullWidth>
             <InputLabel id="demo-simple-select-filled-label">Rue</InputLabel>
             <Select
               labelId="demo-simple-select-filled-label"
               id="demo-simple-select-filled"
-              value={selectVal.lib_rue}
+              value={selectVal?.lib_rue}
               onChange={(e) => {
                 setSelectedVal(
                   ...rues.filter((rue) => rue.id == e.target.value)

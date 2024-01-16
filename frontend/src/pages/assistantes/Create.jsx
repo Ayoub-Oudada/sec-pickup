@@ -15,7 +15,6 @@ import {
 import { Form, useActionData } from "react-router-dom";
 
 const Create = () => {
-
   const data = useActionData();
 
   return (

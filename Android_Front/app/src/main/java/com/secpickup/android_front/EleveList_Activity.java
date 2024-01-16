@@ -1,49 +1,25 @@
 package com.secpickup.android_front;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
->>>>>>> dev
 import android.widget.Toast;
-
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.material.appbar.MaterialToolbar;
-<<<<<<< HEAD
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.secpickup.android_front.Adapter.EleveAdapter;
 import com.secpickup.android_front.modele.Eleve;
 import com.secpickup.android_front.modele.Positions;
-=======
-import com.google.maps.model.LatLng;
-import com.secpickup.android_front.Adapter.EleveAdapter;
-import com.secpickup.android_front.modele.Eleve;
-import com.secpickup.android_front.modele.Positions;
-import com.secpickup.android_front.modele.Trajet;
->>>>>>> dev
 import com.secpickup.android_front.modele.UserAccountType;
 import com.secpickup.android_front.retrofit.EleveApi;
-import com.secpickup.android_front.retrofit.PositionApi;
 import com.secpickup.android_front.retrofit.RetrofitService;
-
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -63,9 +39,7 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
     private TextView textView;
     private LocationListener locationListener;
 
-
     //////////////////////
-
     String username;
     String type;
     String username1;
@@ -79,65 +53,17 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_parent);
 
-
-
         ////////////////////loc///////////////////
         buttonBus = findViewById(R.id.buttonBus);
         textView = findViewById(R.id.textViewId);
         FloatingActionButton startServiceButton = findViewById(R.id.btnStartService);
         handler = new Handler();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         LoadTrajet loadTrajet =new LoadTrajet();
         loadTrajet.loadTrajet ("AssistanteB", this);
         loadTrajet.loadPosition ("AssistanteB", this);
 
         /////////////////////////////
-
-        MaterialToolbar toolbar = findViewById(R.id.toolBar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu de navigation", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        Button bouton_visualiser_trajet =  findViewById(R.id.bouton_Visualiser_trajet);
-        bouton_visualiser_trajet.setOnClickListener(new View.OnClickListener() {
-
-
-
-
-            @Override
-            public void onClick(View view) {
-
-
-
-                //remplir le trajet avec les donnees recuperer de la base
-                Intent intent= new Intent(getApplicationContext(), Visualiser_Trajet.class);
-
-                intent.putExtra("Assistante","Alpha");
-                startActivity(intent);
-                finish();
-
-
-            }});
-
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menuSearch) {
-                    Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu recherche", Toast.LENGTH_SHORT).show();
-                    return true;
-                } else if (item.getItemId() == R.id.menuSettings) {
-                    Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur le menu paramètre", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Intent intent = getIntent();
         if (intent.hasExtra("username") && intent.hasExtra("type")) {
@@ -193,7 +119,6 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
                     }
                 });
     }
-
 
     @Override
     public void onTrajetLoaded(List<Positions> trajet) {

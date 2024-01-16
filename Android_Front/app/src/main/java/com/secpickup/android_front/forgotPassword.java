@@ -58,10 +58,9 @@ public class forgotPassword extends AppCompatActivity {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    // Navigate back to the login page or perform any other actions
                                     Intent loginIntent = new Intent(forgotPassword.this, activity_login.class);
                                     startActivity(loginIntent);
-                                    finish(); // Close the activity after successful password change
+                                    finish();
                                 }
                             }, 2000);
                         }else {

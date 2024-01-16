@@ -23,7 +23,7 @@ const useAssistantes = (page, rowsPerPage, data) => {
   }, [page, rowsPerPage, data]);
 };
 
-const fields = [{label:"id", ident:"id"}, {label:"email", ident:"email"}, {label:"nom", ident:"nom"}, {label:"prenom", ident:"cni"}];
+const fields = [{label:"id", ident:"id"}, {label:"email", ident:"email"}, {label:"nom", ident:"nom"}, {label:"prenom", ident:"prenom"}, {label:"cni", ident:"cni"}];
 
 
 const Index = () => {

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -39,6 +40,11 @@
             android:label="@string/title_activity_visualiser_trajet" />
 >>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
         <activity
+            android:name=".MainActivity2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true"/>
+
+        <activity
             android:name=".forgotPassword"
             android:exported="false" />
         <activity
@@ -52,7 +58,8 @@
             android:exported="false" />
         <activity
             android:name=".EleveList_Activity"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".activity_login"
             android:exported="false" />
