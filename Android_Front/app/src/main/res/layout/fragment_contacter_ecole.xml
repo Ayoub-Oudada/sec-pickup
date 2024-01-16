@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,131 +9,167 @@
     android:gravity="center"
     tools:context=".fragments.ContacterEcoleFragment">
 
-    <!-- Première rangée -->
-    <LinearLayout
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
-        <!-- Image centrée en haut -->
-        <ImageView
-            android:id="@+id/secpickup"
-            android:layout_width="168dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:src="@drawable/icon" />
-
-    </LinearLayout>
-
-    <!-- Deuxième rangée -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <!-- Textes groupés dans un LinearLayout horizontal -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <!-- Premier texte -->
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/slateblue"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="Nom de l'école :"/>
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <!-- Deuxième texte -->
-            <TextView
-                android:id="@+id/nom_ecole"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/secpickup"
+                    android:layout_width="168dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon" />
+
+            </LinearLayout>
+            <!-- Première rangée -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AL Majd"
-                android:textSize="18sp" />
+                android:gravity="center"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contacter Ecole"
+                    android:textAlignment="center"
+                    android:textColor="@color/slateblue"
+                    android:textSize="33sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Deuxième rangée -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="219dp"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <!-- Textes groupés dans un LinearLayout horizontal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Premier texte -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nom de l'école :"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Deuxième texte -->
+                    <TextView
+                        android:id="@+id/nom_ecole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AL Majd"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+                <!-- Textes groupés dans un LinearLayout horizontal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Premier texte -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Télé Fix:"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Deuxième texte -->
+                    <TextView
+                        android:id="@+id/num_tele_ecole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+2125 47 58 61 52"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+                <!-- Textes groupés dans un LinearLayout horizontal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Premier texte -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email :"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Deuxième texte -->
+                    <TextView
+                        android:id="@+id/mail_ecole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="mounir.ziyat@almajd.com"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+                <!-- Textes groupés dans un LinearLayout horizontal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Premier texte -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Site Web : "
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Deuxième texte -->
+                    <TextView
+                        android:id="@+id/site_web_ecole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AlMajdSchool.com"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-        <!-- Textes groupés dans un LinearLayout horizontal -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+    </androidx.cardview.widget.CardView>
 
-            <!-- Premier texte -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/slateblue"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="Télé Fix:"/>
 
-            <!-- Deuxième texte -->
-            <TextView
-                android:id="@+id/num_tele_ecole"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="+2125 47 58 61 52"/>
-
-        </LinearLayout>
-        <!-- Textes groupés dans un LinearLayout horizontal -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <!-- Premier texte -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/slateblue"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="Email :"/>
-
-            <!-- Deuxième texte -->
-            <TextView
-                android:id="@+id/mail_eole"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="mounir.ziyat@almajd.com"/>
-
-        </LinearLayout>
-        <!-- Textes groupés dans un LinearLayout horizontal -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <!-- Premier texte -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/slateblue"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="Site Web : "/>
-
-            <!-- Deuxième texte -->
-            <TextView
-                android:id="@+id/site_web_ecole"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="AlMajdSchool.com"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

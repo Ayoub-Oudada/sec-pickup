@@ -35,7 +35,7 @@ public class ContacterEcoleFragment extends Fragment {
 
         nomTextView = view.findViewById(R.id.nom_ecole);
         numeroTelephoneTextView = view.findViewById(R.id.num_tele_ecole);
-        emailTextView = view.findViewById(R.id.mail_eole);
+        emailTextView = view.findViewById(R.id.mail_ecole);
         siteWebTextView = view.findViewById(R.id.site_web_ecole);
         loadEcoleData();
         return view;
