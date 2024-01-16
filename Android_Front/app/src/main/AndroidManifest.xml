@@ -20,17 +20,35 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+<<<<<<< HEAD
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAM62zi6ulD1s5mnU7H_5FoANiyqGhAZPk" />
         <activity
             android:name=".SendLocationActivity"
             android:exported="false" />
+=======
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAM62zi6ulD1s5mnU7H_5FoANiyqGhAZPk" />
+
+        <activity
+            android:name=".Visualiser_Trajet"
+            android:exported="false"
+            android:label="@string/title_activity_visualiser_trajet" />
+>>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
         <activity
             android:name=".forgotPassword"
             android:exported="false" />
         <activity
             android:name=".ContacterEcoleActivity"
+<<<<<<< HEAD
+=======
+            android:exported="false" />
+        <activity
+            android:name=".SendLocationActivity"
+>>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
             android:exported="false" />
         <activity
             android:name=".EleveList_Activity"

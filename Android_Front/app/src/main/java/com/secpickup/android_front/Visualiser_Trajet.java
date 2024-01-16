@@ -81,7 +81,11 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
         }
 
         LoadTrajet loadTrajet =  new LoadTrajet();
+<<<<<<< HEAD
         loadTrajet.loadTrajet("AssistanteB",this);
+=======
+        loadTrajet.loadTrajet("Alpha",this);
+>>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
 
 
 
@@ -141,7 +145,11 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
         trajet.add(trajet.size(),c5);
         trajet.add(0,c1);
         Toast.makeText(this, trajet.size()+"", Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
         getDirections(trajet);
+=======
+        //getDirections(trajet);
+>>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
     }
 /*
     private void getDirections(List<LatLng> waypoints) {
@@ -230,6 +238,7 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
 
 
     @Override
+<<<<<<< HEAD
     public void onTrajetLoaded(List<Positions> trajets) {
 
         //textView.setText(username+" Latitude-Longitude :"+latLngs.toString());
@@ -237,6 +246,9 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
 
 
 
+=======
+    public void onTrajetLoaded(List<Positions> positionList) {
+>>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
 
     }
 

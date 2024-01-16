@@ -19,15 +19,26 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+>>>>>>> dev
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.appbar.MaterialToolbar;
+<<<<<<< HEAD
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.secpickup.android_front.Adapter.EleveAdapter;
 import com.secpickup.android_front.modele.Eleve;
 import com.secpickup.android_front.modele.Positions;
+=======
+import com.google.maps.model.LatLng;
+import com.secpickup.android_front.Adapter.EleveAdapter;
+import com.secpickup.android_front.modele.Eleve;
+import com.secpickup.android_front.modele.Positions;
+import com.secpickup.android_front.modele.Trajet;
+>>>>>>> dev
 import com.secpickup.android_front.modele.UserAccountType;
 import com.secpickup.android_front.retrofit.EleveApi;
 import com.secpickup.android_front.retrofit.PositionApi;
@@ -92,6 +103,27 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
 
             }
         });
+
+        Button bouton_visualiser_trajet =  findViewById(R.id.bouton_Visualiser_trajet);
+        bouton_visualiser_trajet.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+            @Override
+            public void onClick(View view) {
+
+
+
+                //remplir le trajet avec les donnees recuperer de la base
+                Intent intent= new Intent(getApplicationContext(), Visualiser_Trajet.class);
+
+                intent.putExtra("Assistante","Alpha");
+                startActivity(intent);
+                finish();
+
+
+            }});
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
