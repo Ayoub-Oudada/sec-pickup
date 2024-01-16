@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/distance_bus"
+            android:icon="@drawable/baseline_directions_bus_24"
+            android:title="Où est le bus"/>
+
+        <item
+            android:id="@+id/nav_Signaler_Annomalie"
+            android:icon="@drawable/baseline_new_releases_24"
+            android:title="Signaler Annomalie"/>
+
+        <item
+            android:id="@+id/nav_demander_pieces"
+            android:icon="@drawable/baseline_insert_drive_file_24"
+            android:title="Demander Pièces"/>
+
+        <item
+            android:id="@+id/nav_contacter_ecole"
+            android:icon="@drawable/baseline_phone_enabled_24"
+            android:title="Contacter Ecole"/>
+
+        <item
+            android:id="@+id/nav_chnager_mdp"
+            android:icon="@drawable/baseline_password_24"
+            android:title="Changer Mot de Pass"/>
+
+        <item
+            android:id="@+id/nav_demo"
+            android:icon="@drawable/baseline_lightbulb_24"
+            android:title="Demo"/>
+    </group>
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/baseline_next_plan_24"
+                android:title="Se Déconnecter"/>
+        </menu>
+
+    </item>
+
+</menu>

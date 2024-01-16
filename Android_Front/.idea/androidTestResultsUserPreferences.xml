@@ -3,28 +3,27 @@
   <component name="AndroidTestResultsUserPreferences">
     <option name="androidTestResultsTableState">
       <map>
-        <entry key="1492381557">
+        <entry key="-368058038">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Pixel_2_API_24" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="Xiaomi Redmi Note 8" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>
           </value>
         </entry>
-        <entry key="1743301024">
+        <entry key="28629151">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
-                  <entry key="Pixel_2_API_24" value="120" />
                   <entry key="Tests" value="360" />
-                  <entry key="samsung SM-A520F" value="120" />
+                  <entry key="Xiaomi Redmi Note 8" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

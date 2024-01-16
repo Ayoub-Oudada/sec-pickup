@@ -76,14 +76,14 @@ public class activity_login extends AppCompatActivity {
                                 Toast.makeText(activity_login.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                                 //demarrer une page
                                 if(type=="PARENT"){
-                                Intent intent= new Intent(getApplicationContext(), EleveList_Activity.class);
+                                Intent intent= new Intent(getApplicationContext(), MainActivity2.class);
                                 intent.putExtra("username", username);
                                 intent.putExtra("type", type);
                                 startActivity(intent);
                                 finish();
                                 }
                                 if(type=="ASSISTANTE"){
-                                    Intent intent= new Intent(getApplicationContext(), assistantebusmain.class);
+                                    Intent intent= new Intent(getApplicationContext(), MainActivity2.class);
                                     intent.putExtra("username", username);
                                     intent.putExtra("type", type);
                                     startActivity(intent);
