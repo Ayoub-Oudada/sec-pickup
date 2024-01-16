@@ -68,11 +68,11 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 Menu menu = navigationView.getMenu();
                 menu.findItem(R.id.nav_demander_pieces).setVisible(false);
                 menu.findItem(R.id.nav_contacter_ecole).setVisible(false);
-                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(false);
+                menu.findItem(R.id.distance_bus).setVisible(false);
                 menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(true);
             } else {
                 Menu menu = navigationView.getMenu();
-                menu.findItem(R.id.nav_Visualier_Trajet).setVisible(true);
+                menu.findItem(R.id.distance_bus).setVisible(true);
                 menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(false);
             }
         }
@@ -103,11 +103,11 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 }
                 break;
 
-            case R.id.nav_Visualier_Trajet:
-                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VisualiserTrajetFragment()).commit();
-                }
-                break;
+//            case R.id.nav_Visualier_Trajet:
+//                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VisualiserTrajetFragment()).commit();
+//                }
+//                break;
 
             case R.id.nav_Signaler_Annomalie:
                 if ("ASSISTANTE".equals(getIntent().getStringExtra("type"))) {
@@ -120,7 +120,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.nav_demo:
-                startDownload("https://drive.google.com/file/d/1CuDRpPivtY5pCy-GAru0NxjP1m9yP6AD/view?usp=sharing"); // Remplacez URL_DU_FICHIER_PDF par l'URL réelle du fichier PDF
+                startDownload("https://drive.google.com/file/d/1WPGgq-ed55jE7xwQ7zXBP3j3DKivMgVX/view?usp=sharing"); // Remplacez URL_DU_FICHIER_PDF par l'URL réelle du fichier PDF
                 break;
 
 
