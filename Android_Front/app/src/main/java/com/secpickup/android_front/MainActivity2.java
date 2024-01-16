@@ -38,6 +38,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
 
     private DrawerLayout drawerLayout;
     private long downloadId;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +69,9 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 Menu menu = navigationView.getMenu();
                 menu.findItem(R.id.nav_demander_pieces).setVisible(false);
                 menu.findItem(R.id.nav_contacter_ecole).setVisible(false);
-                menu.findItem(R.id.distance_bus).setVisible(false);
                 menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(true);
             } else {
                 Menu menu = navigationView.getMenu();
-                menu.findItem(R.id.distance_bus).setVisible(true);
                 menu.findItem(R.id.nav_Signaler_Annomalie).setVisible(false);
             }
         }
@@ -103,7 +102,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 }
                 break;
 
-//            case R.id.nav_Visualier_Trajet:
+//            case R.id.distance_bus:
 //                if ("PARENT".equals(getIntent().getStringExtra("type"))) {
 //                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VisualiserTrajetFragment()).commit();
 //                }
@@ -116,7 +115,18 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.nav_chnager_mdp:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChangerMDPFragment()).commit();
+                id = getIntent().getLongExtra("id", 1);
+
+                // Create a bundle to pass the id to the fragment
+                Bundle bundle = new Bundle();
+                bundle.putLong("id", id);
+
+                // Create a new instance of the fragment and set the arguments
+                ChangerMDPFragment changerMDPFragment = new ChangerMDPFragment();
+                changerMDPFragment.setArguments(bundle);
+
+                // Replace the fragment
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, changerMDPFragment).commit();
                 break;
 
             case R.id.nav_demo:

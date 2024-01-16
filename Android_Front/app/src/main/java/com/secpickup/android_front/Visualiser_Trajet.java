@@ -80,14 +80,9 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
             assistante = intent.getStringExtra("Assistante");
         }
 
-        LoadTrajet loadTrajet =  new LoadTrajet();
-<<<<<<< HEAD
-        loadTrajet.loadTrajet("AssistanteB",this);
-=======
-        loadTrajet.loadTrajet("Alpha",this);
->>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
-
-
+        LoadTrajet loadTrajet = new LoadTrajet();
+        loadTrajet.loadTrajet("AssistanteB", this);
+        loadTrajet.loadTrajet("Alpha", this);
 
 
         // Créer une zone englobante pour tous les marqueurs
@@ -139,17 +134,13 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
         googleMap.moveCamera(cameraUpdate);
 
 
-
         // Obtenir l'itinéraire optimal entre le premier et le dernier élément de la liste
 
-        trajet.add(trajet.size(),c5);
-        trajet.add(0,c1);
-        Toast.makeText(this, trajet.size()+"", Toast.LENGTH_SHORT).show();
-<<<<<<< HEAD
+        trajet.add(trajet.size(), c5);
+        trajet.add(0, c1);
+        Toast.makeText(this, trajet.size() + "", Toast.LENGTH_SHORT).show();
         getDirections(trajet);
-=======
         //getDirections(trajet);
->>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
     }
 /*
     private void getDirections(List<LatLng> waypoints) {
@@ -217,8 +208,6 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
     }
 
 
-
-
     private void displayRoute(DirectionsRoute route) {
         PolylineOptions polylineOptions = new PolylineOptions();
         DirectionsLeg leg = route.legs[0];
@@ -230,6 +219,7 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
 
         googleMap.addPolyline(polylineOptions);
     }
+
     private BitmapDescriptor getResizedBitmapDescriptor(int resourceId, int width, int height) {
         Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(), resourceId);
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, width, height, false);
@@ -238,22 +228,13 @@ public class Visualiser_Trajet extends FragmentActivity implements OnMapReadyCal
 
 
     @Override
-<<<<<<< HEAD
     public void onTrajetLoaded(List<Positions> trajets) {
 
         //textView.setText(username+" Latitude-Longitude :"+latLngs.toString());
-
-
-
-
-=======
-    public void onTrajetLoaded(List<Positions> positionList) {
->>>>>>> 7650df02f568a954f51abff8bcab7178e258404f
-
     }
+        @Override
+        public void onFailedToLoadTrajet () {
 
-    @Override
-    public void onFailedToLoadTrajet() {
+        }
 
-    }
 }

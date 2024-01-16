@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,7 +17,9 @@ import android.content.Context;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.secpickup.android_front.Adapter.EleveAdapter;
+import com.secpickup.android_front.EleveList_Activity;
 import com.secpickup.android_front.LoadTrajet;
+import com.secpickup.android_front.Visualiser_Trajet;
 import com.secpickup.android_front.modele.Eleve;
 import com.secpickup.android_front.modele.Positions;
 import com.secpickup.android_front.modele.UserAccountType;
@@ -32,7 +35,7 @@ import com.secpickup.android_front.R;
 
 
 
-public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTrajetCallback, LoadTrajet.LoadPositionCallback {
+public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTrajetCallback,LoadTrajet.LoadPositionCallback,LoadTrajet.LoadDistanceCallback {
 
     private RecyclerView recyclerView;
     private EleveAdapter eleveAdapter;
@@ -47,18 +50,24 @@ public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTraje
     String username;
     String type;
 
+    String username1;
+    String username2="AssistanteB";
+    Button buttonBus;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize location and other necessary components here
         handler = new Handler();
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
         LoadTrajet loadTrajet = new LoadTrajet();
         loadTrajet.loadTrajet("AssistanteB", this);
         loadTrajet.loadPosition("AssistanteB", this);
 
-        Intent intent = getActivity().getIntent();
+        Intent intent = requireActivity().getIntent();
         if (intent.hasExtra("username") && intent.hasExtra("type")) {
             username = intent.getStringExtra("username");
             type = intent.getStringExtra("type");
@@ -72,8 +81,10 @@ public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTraje
 
         recyclerView = view.findViewById(R.id.eleveList_recyclerView);
         textView = view.findViewById(R.id.textViewId);
+        buttonBus = view.findViewById(R.id.buttonBus1);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         loadEleves();
@@ -82,14 +93,15 @@ public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTraje
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lancez le service en cliquant sur le bouton
-                //startLocationUpdates();
-                Toast.makeText(getActivity(), "Vous avez cliqué sur Tracking", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Vous avez cliqué sur Maps", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(requireContext(), Visualiser_Trajet.class);
+                startActivity(intent1);
             }
         });
 
         return view;
     }
+
 
     private void loadEleves() {
         RetrofitService retrofitService = new RetrofitService();
@@ -117,32 +129,65 @@ public class HomeFragmentParent extends Fragment implements LoadTrajet.LoadTraje
 
     @Override
     public void onTrajetLoaded(List<Positions> trajet) {
-        // Handle loaded trajectory data
-        String username = "AssistanteB";
+        String username="AssistanteB";
         List<LatLng> latLngs = new ArrayList<>();
         LatLng latLng;
-        for (int i = 0; i < trajet.size(); i++) {
-            latLng = new LatLng(trajet.get(i).getLatitude(), trajet.get(i).getLongitude());
+        for (int i=0; i<trajet.size();i++){
+            latLng=new LatLng(trajet.get(i).getLatitude(),trajet.get(i).getLongitude());
             latLngs.add(latLng);
+
         }
-        textView.setText(username + " Latitude-Longitude :" + latLngs.toString());
     }
 
     @Override
     public void onFailedToLoadTrajet() {
         // Handle failure to load trajectory data
     }
-
     @Override
-    public void onPositionLoaded(Positions position) {
-        // Handle loaded position data
-        String username = "AssistanteB";
-        LatLng latLng = new LatLng(position.getLatitude(), position.getLongitude());
-        textView.setText(username + " Latitude-Longitude de LastPoint :" + latLng);
+    public void onFailedToLoadPosition() {
+
+
     }
 
     @Override
-    public void onFailedToLoadPosition() {
-        // Handle failure to load position data
+    public void onPositionLoaded(Positions position) {
+        String username="AssistanteB";
+        //String type="ASSISTANTE";
+        LatLng latLng=new LatLng(position.getLatitude(),position.getLongitude());
+        //textView.setText(username+" Latitude-Longitude de LastPoint :"+latLng);
+    }
+
+
+    @Override
+    public void onDistanceLoaded(Double distance) {
+//        String username2 = "AssistanteB";
+//        String username1 = username;
+//
+//        textView.setText("La distance entre " + username1 + " et le Bus est " + distance + " mètre(s)");
+//
+//        buttonBus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Log to check if the button click event is triggered
+//
+//                // Display a toast to check if the toast is being shown
+//                Toast.makeText(requireContext(), "Vous avez cliqué sur Maps", Toast.LENGTH_LONG).show();
+//            }
+//        });
+        buttonBus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(requireContext(), "Vous avez cliqué sur Maps", Toast.LENGTH_SHORT).show();
+                //Intent intent1 = new Intent(requireContext(), Visualiser_Trajet.class);
+                //startActivity(intent1);
+            }
+        });
+    }
+
+
+
+    @Override
+    public void onFailedToLoadDistance() {
+
     }
 }

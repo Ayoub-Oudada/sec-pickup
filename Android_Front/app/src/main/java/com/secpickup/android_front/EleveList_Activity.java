@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,7 +55,7 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
         setContentView(R.layout.activity_main_parent);
 
         ////////////////////loc///////////////////
-        buttonBus = findViewById(R.id.buttonBus);
+      //  buttonBus = findViewById(R.id.buttonBus);
         textView = findViewById(R.id.textViewId);
         FloatingActionButton startServiceButton = findViewById(R.id.btnStartService);
         handler = new Handler();
@@ -82,14 +83,9 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lancez le service en cliquant sur le bouton
-                //startLocationUpdates();
                 Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur Maps", Toast.LENGTH_SHORT).show();
                 Intent intent1= new Intent(getApplicationContext(), Visualiser_Trajet.class);
-                //intent.putExtra("username", username);
-                //intent.putExtra("type", type);
                 startActivity(intent1);
-                //finish();
             }
         });
 
@@ -158,8 +154,6 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
     public void onDistanceLoaded(Double distance) {
         String username2="AssistanteB";
         String username1=username;
-        //String type="ASSISTANTE";
-        //LatLng latLng=new LatLng(position.getLatitude(),position.getLongitude());
 
         textView.setText("La distance entre "+username1+" et le Bus est "+distance+"metre(s)");
         buttonBus.setOnClickListener(new View.OnClickListener() {

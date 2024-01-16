@@ -71,6 +71,7 @@ public class activity_login extends AppCompatActivity {
 
                                 String username = user.getUsername();
                                 String type = String.valueOf(user.getType());
+                                long id = user.getId();
 
 
                                 Toast.makeText(activity_login.this, "Authentication successful", Toast.LENGTH_SHORT).show();
@@ -79,6 +80,7 @@ public class activity_login extends AppCompatActivity {
                                 Intent intent= new Intent(getApplicationContext(), MainActivity2.class);
                                 intent.putExtra("username", username);
                                 intent.putExtra("type", type);
+                                intent.putExtra("id",id);
                                 startActivity(intent);
                                 finish();
                                 }

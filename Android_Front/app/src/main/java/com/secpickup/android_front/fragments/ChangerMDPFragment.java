@@ -24,6 +24,7 @@ import retrofit2.Response;
 
 public class ChangerMDPFragment extends Fragment {
     private EditText oldPasswordEditText, newPasswordEditText, confirmPasswordEditText;
+    long id;
 
     public ChangerMDPFragment() {
     }
@@ -58,8 +59,12 @@ public class ChangerMDPFragment extends Fragment {
                     Toast.makeText(getActivity(), "New password and confirm password do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Bundle args = getArguments();
+                if (args != null) {
+                    id = args.getLong("id", 1);
+                }
 
-                Long currentUserId = 1L;
+                Long currentUserId = id;
                 userApi.updateUserPassword(currentUserId, oldPassword, newPassword).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
