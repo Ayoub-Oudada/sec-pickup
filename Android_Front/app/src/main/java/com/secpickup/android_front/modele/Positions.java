@@ -8,7 +8,6 @@ public class Positions extends BaseEntity{
     private double latitude;
     private double longitude;
 
-
     public double getLatitude() {
         return latitude;
     }
@@ -26,6 +25,4 @@ public class Positions extends BaseEntity{
     }
 
 
-
-
-}
+    }

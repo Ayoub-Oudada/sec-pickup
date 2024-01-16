@@ -39,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.LoadTrajetCallback,LoadTrajet.LoadPositionCallback{
+public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.LoadTrajetCallback,LoadTrajet.LoadPositionCallback,LoadTrajet.LoadDistanceCallback{
 
     private RecyclerView recyclerView;
     private EleveAdapter eleveAdapter;
@@ -57,6 +57,10 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
 
     String username;
     String type;
+    String username1;
+    String username2="AssistanteB";
+
+    Button buttonBus;
 
 
     @Override
@@ -67,7 +71,7 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
 
 
         ////////////////////loc///////////////////
-        //Button startServiceButton = findViewById(R.id.btnStartService);
+        buttonBus = findViewById(R.id.buttonBus);
         textView = findViewById(R.id.textViewId);
         FloatingActionButton startServiceButton = findViewById(R.id.btnStartService);
         handler = new Handler();
@@ -76,6 +80,7 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
         LoadTrajet loadTrajet =new LoadTrajet();
         loadTrajet.loadTrajet ("AssistanteB", this);
         loadTrajet.loadPosition ("AssistanteB", this);
+
         /////////////////////////////
 
         MaterialToolbar toolbar = findViewById(R.id.toolBar);
@@ -108,6 +113,8 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
             type = intent.getStringExtra("type");
         }
 
+        loadTrajet.loadDistance(username,"AssistanteB",this);
+
         recyclerView = findViewById(R.id.eleveList_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -119,9 +126,16 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
             public void onClick(View v) {
                 // Lancez le service en cliquant sur le bouton
                 //startLocationUpdates();
-                Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur Tracking", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EleveList_Activity.this, "Vous avez cliqué sur Maps", Toast.LENGTH_SHORT).show();
+                Intent intent1= new Intent(getApplicationContext(), Visualiser_Trajet.class);
+                //intent.putExtra("username", username);
+                //intent.putExtra("type", type);
+                startActivity(intent1);
+                //finish();
             }
         });
+
+
     }
 
     private void loadEleves() {
@@ -160,7 +174,7 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
             latLngs.add(latLng);
 
         }
-        textView.setText(username+" Latitude-Longitude :"+latLngs.toString());
+        //textView.setText(username+" Latitude-Longitude :"+latLngs.toString());
     }
 
 
@@ -174,11 +188,36 @@ public class EleveList_Activity extends AppCompatActivity implements LoadTrajet.
         String username="AssistanteB";
         //String type="ASSISTANTE";
         LatLng latLng=new LatLng(position.getLatitude(),position.getLongitude());
-        textView.setText(username+" Latitude-Longitude de LastPoint :"+latLng);
+        //textView.setText(username+" Latitude-Longitude de LastPoint :"+latLng);
     }
 
     @Override
     public void onFailedToLoadPosition() {
+
+
+    }
+
+    @Override
+    public void onDistanceLoaded(Double distance) {
+        String username2="AssistanteB";
+        String username1=username;
+        //String type="ASSISTANTE";
+        //LatLng latLng=new LatLng(position.getLatitude(),position.getLongitude());
+
+        textView.setText("La distance entre "+username1+" et le Bus est "+distance+"metre(s)");
+        buttonBus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lancez le service en cliquant sur le bouton
+                //startLocationUpdates();
+                Toast.makeText(EleveList_Activity.this,"La distance qui vous sépare du Bus est "+distance+"  mètre(s)", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    @Override
+    public void onFailedToLoadDistance() {
 
     }
 }

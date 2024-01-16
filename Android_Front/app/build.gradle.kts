@@ -47,6 +47,7 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:3.6.0")
     // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
     implementation ("com.mysql:mysql-connector-j:8.2.0")
+    implementation ("com.google.maps:google-maps-services:0.19.0")
 
 
 

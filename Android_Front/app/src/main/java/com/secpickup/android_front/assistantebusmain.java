@@ -141,7 +141,7 @@ public class assistantebusmain extends AppCompatActivity implements LoadStudent.
             // TODO: Considérez l'appel de ActivityCompat#requestPermissions ici
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000, 10, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 10, locationListener);
     }
 
     private void updateDatabase(final double lat, final double lon,final String username) {
